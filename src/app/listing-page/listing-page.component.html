@@ -1,0 +1,187 @@
+<div class="body">
+    <div class="container">
+        <div class="cont">
+            <ul class="head_ul1">
+                <li><a
+                    routerLink="/listingPage"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                    ><img src="/NewDrops.png" alt="">
+                  </a>
+                </li>
+                <li><a class="head_a" href="">
+                    <p>Men</p> 
+                </a></li>
+                <li><a class="head_a" href="">
+                    <p>Women</p>
+                </a></li>
+            </ul>
+            <a href=""><img src="/Group.png" alt="index.html"></a>
+            <ul class="head_ul2">
+                <li><a
+                    routerLink="/listingPage"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                    ><button><img src="/Search.png" alt=""></button>
+                  </a>
+                </li>
+                <li>
+                    <a
+                    routerLink="/login"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                    ><button><img src="/User.png" alt=""></button>
+                  </a>
+                </li>
+                <li>
+                    <a
+                    routerLink="/bag"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                    ><div class="yel_circ"><img src="/bagpic.png" alt=""></div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+        <div class="container">
+            <img class="get_off" src="/Frame 11.png" alt="">
+            <div class="life_style">
+                <div>
+                    <p class="life_text">Life Style Shoes</p>
+                    <p class="items">10 items</p>
+                </div>
+                <p class="choose">CHOOSE FILTERS YOU NEED</p>
+                
+            </div>
+            <div class="catalog_cont">
+                <div class="filters">
+                    <div class="f_cont">
+                        <p class="filt">Filters</p>
+                    </div>    
+                    <div class="refine">
+                        <p>SIZE</p>
+                    </div>
+                    <ul class="size1">
+                        <button  id="but" class="white bg1 ">38</button>
+                        <button  id="but" class="white bg2">39</button>
+                        <button  id="but" class="white bg3">40</button>
+                        <button  id="but" class="white bg4">41</button>
+                        <button  id="but" class="white bg5">42</button>
+                        <button  id="but" class="white bg6">43</button>
+                        <button  id="but" class="white bg7">44</button>
+                        <button  id="but" class="white bg8">45</button>
+                        <button  id="but" class="white bg9">46</button>
+                        <button  id="but" class="white bg10">47</button>
+                    </ul>
+                    <div class="refine">
+                        <p>COLOR</p>
+                    </div>
+                    <ul class="size1">
+                        <button id="butc" class="c1 colors"><img src="/Rectangle 16 (1).png" alt=""></button>
+                        <button id="butc" class="c2 colors"><img src="/Rectangle 16.png" alt=""></button>
+                        <button id="butc" class="c3 colors"><img src="/Rectangle 17 (1).png" alt=""></button>
+                        <button id="butc" class="c4 colors"><img src="/Rectangle 17.png" alt=""></button>
+                        <button id="butc" class="c5 colors"><img src="/Rectangle 18 (1).png" alt=""></button>
+                        <button id="butc" class="c6 colors"><img src="/Rectangle 18.png" alt=""></button>
+                        <button id="butc" class="c7 colors"><img src="/Rectangle 19 (1).png" alt=""></button>
+                        <button id="butc" class="c8 colors"><img src="/Rectangle 19.png" alt=""></button>
+                        <button id="butc" class="c9 colors"><img src="/Rectangle 20 (1).png" alt=""></button>
+                        <button id="butc" class="c10 colors"><img src="/Rectangle 20.png" alt=""></button>
+                    </ul>
+                    <div class="refine">
+                        <p>TYPE</p>
+                    </div>
+                    <ul class="type">
+                        <li><input id="butt" class="ch0 emp" type="checkbox"><label>Casual shoes</label></li>
+                        <li><input type="checkbox" id="butt" class="ch1 emp"><label>Runners</label></li>
+                        <li><input type="checkbox" id="butt" class="ch2 emp"><label>Hiking</label></li>
+                        <li><input type="checkbox" id="butt" class="ch3 emp"><label>Sneaker</label></li>
+                        <li><input type="checkbox" id="butt" class="ch4 emp"><label>Basketball</label></li>
+                        <li><input type="checkbox" id="butt" class="ch5 emp"><label>Golf</label></li>
+                        <li><input type="checkbox" id="butt" class="ch6 emp"><label>Outdoor</label></li>
+                    </ul>
+                    <div class="refine">
+                        <p>GENDER</p>
+                    </div>
+                    <ul class="type">
+                        <li><input type="checkbox" id="buts" class="ch7 emp"><label>Men</label></li>
+                        <li><input type="checkbox" id="buts" class="ch8 emp"><label>Women</label></li>
+                    </ul>
+                </div>
+                <div class="catalog">
+                    <div *ngIf="items.length != 0">
+                        <div class="card" *ngFor="let el of items" >
+                            <img src="{{el.img_url}}" alt="">
+                            <p>{{el.name}}</p>
+                            <a
+                                routerLink="/itemPage"
+                                routerLinkActive="active"
+                                [routerLinkActiveOptions]="{ exact: true }"
+                            >
+                                <div (click)="getId(el.id)" class="but_pr"><img src="/img/Button (2).png" alt=""><span class="rect">{{el.price}}</span></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <div class="foot_cont">
+                <div class="purp_cont">  
+                    <div class="purp_text">
+                        <p class="text1">Join our KicksPlus Club & get 15% off</p>
+                        <p class="text2">Sign up for free! Join the community.</p>
+                        <div class="input_cont">
+                            <input type="text" placeholder="Email address" >
+                            <button><img src="/style_layer.png" alt=""></button>
+                        </div>
+                    </div>
+                    <a href=""><img src="/Group 1.png" alt=""></a>
+                </div>
+                <div class="grey_cont">
+                    <div class="lit_cont">
+                        <div>
+                            <p class="oran_text">About us</p>
+                            <p class="grey_text">We are the biggest hyperstore in the universe. We got you all cover with our exclusive collections and latest drops.</p>
+                        </div>
+                        <div class="lit_cont2">
+                            <div>
+                                <p class="or_text">Categories</p>
+                                <ul class="gr_text">
+                                    <a class="a" href="/listing_page.html"><li>Runners</li></a>
+                                    <a class="a" href="/listing_page.html"><li>Sneakers</li></a>
+                                    <a class="a" href="/listing_page.html"><li>Basketball</li></a>
+                                    <a class="a" href="/listing_page.html"><li>Outdoor</li></a>
+                                    <a class="a" href="/listing_page.html"><li>Golf</li></a>
+                                    <a class="a" href="/listing_page.html"><li>Hiking</li></a>
+                                </ul>
+                            </div>
+                            <div>
+                                <p class="or_text">Company</p>
+                                <ul class="gr_text">
+                                    <a class="a" href=""><li>About</li></a>
+                                    <a class="a" href=""><li>Contact</li></a>
+                                    <a class="a" href=""><li>Blogs</li></a>
+                                </ul>
+                            </div>
+                            <div>
+                                <p class="or_text">Follow us</p>
+                                <ul class="gr_img">
+                                    <a class="a" href=""><li><img src="/ic_baseline-facebook.png" alt=""></li></a>
+                                    <a class="a" href=""><li><img src="/mdi_instagram.png" alt=""></li></a>
+                                    <a class="a" href=""><li><img src="/mdi_twitter.png" alt=""></li></a>
+                                    <a class="a" href=""><li><img src="/ic_baseline-tiktok.png" alt=""></li></a>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <img class="logo" src="/Logo (1).png" alt="">
+                </div>
+            </div>
+        </div>
+</div>

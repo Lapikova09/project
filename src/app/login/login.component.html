@@ -1,0 +1,168 @@
+<div class="body">
+    <div class="container">
+        <div class="cont">
+            <ul class="head_ul1">
+                <li><a
+                    routerLink="/listingPage"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                    ><img src="/NewDrops.png" alt="">
+                  </a>
+                </li>
+                <li><a class="head_a" href="">
+                    <p>Men</p> 
+                </a></li>
+                <li><a class="head_a" href="">
+                    <p>Women</p>
+                </a></li>
+            </ul>
+            <a href=""><img src="/Group.png" alt="index.html"></a>
+            <ul class="head_ul2">
+                <li><a
+                    routerLink="/listingPage"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                    ><button><img src="/Search.png" alt=""></button>
+                  </a>
+                </li>
+                <li>
+                    <a
+                    routerLink="/login"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                    ><button><img src="/User.png" alt=""></button>
+                  </a>
+                </li>
+                <li>
+                    <a
+                    routerLink="/bag"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                    ><div class="yel_circ"><img src="/bagpic.png" alt=""></div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <div class="container">
+        <div class="buttons">
+            <div (click)="log()" class='log_but' >LOG IN</div>
+            <div (click)="reg()" class='log_but' >REGISTER</div>
+        </div>
+        <div class="login_cont">
+            <div class="log" *ngIf="login_shown">
+                <h6>Login</h6>
+                <p class="forgot">Forgot your password?</p>
+                <input class="email" type="text" placeholder="Email">
+                <input class="password" type="text" placeholder="Password">
+                <div class="keep_loged">
+                    <input type="checkbox"><label>Keep me logged in - applies to all log in options below. <p>More info</p></label>
+                </div>
+                <button><img src="/Button000.png" alt=""></button>
+                <div class="social">
+                    <button><img src="/fr1.png" alt=""></button>
+                    <button><img src="/fr2.png" alt=""></button>
+                    <button><img src="/fr3.png" alt=""></button>
+                </div>
+                <p class="click">By clicking 'Log In' you agree to our website KicksClub Terms & Conditions, Kicks Privacy Notice and Terms & Conditions.</p>
+            </div>
+            <div class="register" *ngIf="register_shown">
+                <h6>Register</h6>
+                <p class="sign_up">Sign up with</p>
+                <div class="social">
+                    <button><img src="/fr1.png" alt=""></button>
+                    <button><img src="/fr2.png" alt=""></button>
+                    <button><img src="/fr3.png" alt=""></button>
+                </div>
+                <p class="or">OR</p>
+                <p class="bl_text">Your Name</p>
+                <input class="name" type="text" placeholder="First Name">
+                <input class="name" type="text" placeholder="Last Name">
+                <p class="bl_text">Gender</p>
+                <div class="gender">
+                    <input type="checkbox"><label>Male</label>
+                    <input type="checkbox"><label>Female</label>
+                    <input type="checkbox"><label>Other</label>
+                </div>
+                <p class="bl_text">Login Details</p>
+                <input class="name" type="text" placeholder="Email">
+                <input class="name" type="text" placeholder="Password">
+                <p class="little_text">Minimum 8 characters with at least one uppercase, one lowercase, one special character and a number</p>
+                <div class="keep_loged">
+                    <input type="checkbox"><label>By clicking 'Log In' you agree to our website KicksClub Terms & Conditions, Kicks Privacy Notice and Terms & Conditions.</label>
+                </div>
+                <div class="keep_loged">
+                    <input type="checkbox"><label>Keep me logged in - applies to all log in options below. <p>More info</p></label>
+                </div>
+                <button><img src="/register.png" alt=""></button>
+            </div>
+            <div class="join">
+                <h2>Join  Kicks Club Get Rewarded <br> Today.</h2>
+                <p class="kicks">As kicks club member you get rewarded with what you love for doing what you love. Sign up today and receive immediate access to these Level 1 benefits:</p>
+                <img src="/Frame 1504.png" alt="">
+                <p class="points">Join now to start earning points, reach new levels and unlock more rewards and benefits from adiClub.​</p>
+                <img src="/black.png" alt="">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="foot_cont">
+            <div class="purp_cont">  
+                <div class="purp_text">
+                    <p class="text1">Join our KicksPlus Club & get 15% off</p>
+                    <p class="text2">Sign up for free! Join the community.</p>
+                    <div class="input_cont">
+                        <input type="text" placeholder="Email address" >
+                        <button><img src="/style_layer.png" alt=""></button>
+                    </div>
+                </div>
+                <a href=""><img src="/Group 1.png" alt=""></a>
+            </div>
+            <div class="grey_cont">
+                <div class="lit_cont">
+                    <div>
+                        <p class="oran_text">About us</p>
+                        <p class="grey_text">We are the biggest hyperstore in the universe. We got you all cover with our exclusive collections and latest drops.</p>
+                    </div>
+                    <div class="lit_cont2">
+                        <div>
+                            <p class="or_text">Categories</p>
+                            <ul class="gr_text">
+                                <a class="a" href="/listing_page.html"><li>Runners</li></a>
+                                <a class="a" href="/listing_page.html"><li>Sneakers</li></a>
+                                <a class="a" href="/listing_page.html"><li>Basketball</li></a>
+                                <a class="a" href="/listing_page.html"><li>Outdoor</li></a>
+                                <a class="a" href="/listing_page.html"><li>Golf</li></a>
+                                <a class="a" href="/listing_page.html"><li>Hiking</li></a>
+                            </ul>
+                        </div>
+                        <div>
+                            <p class="or_text">Company</p>
+                            <ul class="gr_text">
+                                <a class="a" href=""><li>About</li></a>
+                                <a class="a" href=""><li>Contact</li></a>
+                                <a class="a" href=""><li>Blogs</li></a>
+                            </ul>
+                        </div>
+                        <div>
+                            <p class="or_text">Follow us</p>
+                            <ul class="gr_img">
+                                <a class="a" href=""><li><img src="/ic_baseline-facebook.png" alt=""></li></a>
+                                <a class="a" href=""><li><img src="/mdi_instagram.png" alt=""></li></a>
+                                <a class="a" href=""><li><img src="/mdi_twitter.png" alt=""></li></a>
+                                <a class="a" href=""><li><img src="/ic_baseline-tiktok.png" alt=""></li></a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <img class="logo" src="/Logo (1).png" alt="">
+            </div>
+            
+        </div>
+    </div>
+</div>

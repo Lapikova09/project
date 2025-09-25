@@ -1,0 +1,54 @@
+import { Component, OnInit } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { MainService } from '../main.service';
+import { Item } from '../interfaces';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'app-listing-page',
+  imports: [ RouterLink, RouterLinkActive, FormsModule, CommonModule ],
+  templateUrl: './listing-page.component.html',
+  styleUrl: './listing-page.component.css',
+  standalone:true
+})
+export class ListingPageComponent {
+
+  constructor(private apiService:MainService){
+
+  }
+
+  items:Item[]=[
+    {
+      id: 0,
+      name: 'привет',
+      price: 12121,
+      info: 'как дела',
+      img_url: '',
+      stock: 0,
+      category_id: 0
+    }
+  ]
+  //activeId:number = 0
+
+  ngOnInit(){
+    this.getAllItems()
+  }
+
+  getAllItems(){
+    this.apiService.getItems().subscribe({
+      next: (data: Item[]) => {
+        this.items = data;
+        console.log("Получил");
+      },
+      error: (err) => {
+        console.error("Ошибка при получении данных:", err);
+      }
+    });
+  }
+
+  getId(id:number){
+    //this.activeId = id
+    this.apiService.activeItemId = id
+  }
+}
