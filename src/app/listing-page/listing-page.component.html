@@ -1,28 +1,28 @@
 <div class="body">
     <div class="container">
         <div class="cont">
-            <ul class="head_ul1">
+            <a
+                routerLink="/listingPage"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                class="new_products"
+            >
+                <p>New products</p>
+                <img src="/fire.png" alt="">
+            </a>
+            <a
+                routerLink=""
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+            >
+                <img class="click_shop" width="170px" src="/click_shop_logo.png" alt="index.html">
+            </a>
+            <ul class="head_ul">
                 <li><a
                     routerLink="/listingPage"
                     routerLinkActive="active"
                     [routerLinkActiveOptions]="{ exact: true }"
-                    ><img src="/NewDrops.png" alt="">
-                  </a>
-                </li>
-                <li><a class="head_a" href="">
-                    <p>Men</p> 
-                </a></li>
-                <li><a class="head_a" href="">
-                    <p>Women</p>
-                </a></li>
-            </ul>
-            <a href=""><img src="/Group.png" alt="index.html"></a>
-            <ul class="head_ul2">
-                <li><a
-                    routerLink="/listingPage"
-                    routerLinkActive="active"
-                    [routerLinkActiveOptions]="{ exact: true }"
-                    ><button><img src="/Search.png" alt=""></button>
+                    ><img width="30px" src="/Search.png" alt="">
                   </a>
                 </li>
                 <li>
@@ -30,7 +30,7 @@
                     routerLink="/login"
                     routerLinkActive="active"
                     [routerLinkActiveOptions]="{ exact: true }"
-                    ><button><img src="/User.png" alt=""></button>
+                    ><img width="30px" src="/User.png" alt="">
                   </a>
                 </li>
                 <li>
@@ -38,20 +38,19 @@
                     routerLink="/bag"
                     routerLinkActive="active"
                     [routerLinkActiveOptions]="{ exact: true }"
-                    ><div class="yel_circ"><img src="/bagpic.png" alt=""></div>
+                    ><div class="yel_circ"><img class="bag" width="34px" src="/bag.png" alt=""></div>
                     </a>
                 </li>
             </ul>
         </div>
     </div>
 
-
         <div class="container">
             <img class="get_off" src="/Frame 11.png" alt="">
             <div class="life_style">
                 <div>
-                    <p class="life_text">Life Style Shoes</p>
-                    <p class="items">10 items</p>
+                    <p class="life_text">Catalog</p>
+                    <p class="items">{{items_number}} items</p>
                 </div>
                 <p class="choose">CHOOSE FILTERS YOU NEED</p>
                 
@@ -62,37 +61,7 @@
                         <p class="filt">Filters</p>
                     </div>    
                     <div class="refine">
-                        <p>SIZE</p>
-                    </div>
-                    <ul class="size1">
-                        <button  id="but" class="white bg1 ">38</button>
-                        <button  id="but" class="white bg2">39</button>
-                        <button  id="but" class="white bg3">40</button>
-                        <button  id="but" class="white bg4">41</button>
-                        <button  id="but" class="white bg5">42</button>
-                        <button  id="but" class="white bg6">43</button>
-                        <button  id="but" class="white bg7">44</button>
-                        <button  id="but" class="white bg8">45</button>
-                        <button  id="but" class="white bg9">46</button>
-                        <button  id="but" class="white bg10">47</button>
-                    </ul>
-                    <div class="refine">
-                        <p>COLOR</p>
-                    </div>
-                    <ul class="size1">
-                        <button id="butc" class="c1 colors"><img src="/Rectangle 16 (1).png" alt=""></button>
-                        <button id="butc" class="c2 colors"><img src="/Rectangle 16.png" alt=""></button>
-                        <button id="butc" class="c3 colors"><img src="/Rectangle 17 (1).png" alt=""></button>
-                        <button id="butc" class="c4 colors"><img src="/Rectangle 17.png" alt=""></button>
-                        <button id="butc" class="c5 colors"><img src="/Rectangle 18 (1).png" alt=""></button>
-                        <button id="butc" class="c6 colors"><img src="/Rectangle 18.png" alt=""></button>
-                        <button id="butc" class="c7 colors"><img src="/Rectangle 19 (1).png" alt=""></button>
-                        <button id="butc" class="c8 colors"><img src="/Rectangle 19.png" alt=""></button>
-                        <button id="butc" class="c9 colors"><img src="/Rectangle 20 (1).png" alt=""></button>
-                        <button id="butc" class="c10 colors"><img src="/Rectangle 20.png" alt=""></button>
-                    </ul>
-                    <div class="refine">
-                        <p>TYPE</p>
+                        <p>CATEGORY</p>
                     </div>
                     <ul class="type">
                         <li><input id="butt" class="ch0 emp" type="checkbox"><label>Casual shoes</label></li>
@@ -104,11 +73,19 @@
                         <li><input type="checkbox" id="butt" class="ch6 emp"><label>Outdoor</label></li>
                     </ul>
                     <div class="refine">
-                        <p>GENDER</p>
+                        <p>PRICE</p>
                     </div>
                     <ul class="type">
-                        <li><input type="checkbox" id="buts" class="ch7 emp"><label>Men</label></li>
-                        <li><input type="checkbox" id="buts" class="ch8 emp"><label>Women</label></li>
+                        <li><input type="number" id="buts" class="ch7 emp"><label>From</label></li>
+                        <li><input type="number" id="buts" class="ch8 emp"><label>To</label></li>
+                    </ul>
+                    <ul class="type">
+                        <div class="price_cont">
+                            <button>Sort by price</button>
+                            <button>Sort by price</button>
+                        </div>
+                        <button>Sort by rating</button>
+                        <button>Sort by date</button>
                     </ul>
                 </div>
                 <div class="catalog">

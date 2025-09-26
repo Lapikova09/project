@@ -78,3 +78,75 @@ h6 {
 	font-weight: inherit;
 	font-size: inherit;
 }
+
+.body{
+    margin: 0 auto;
+    padding-top: 32px;
+
+    font-family: Rubik;
+    color: var(--Dark-Gray, #232321);
+    background: var(--Gray, #E7E7E3);
+
+}
+
+.container{
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+.cont{
+    display: flex;
+    width: 1320px;
+    padding: 20px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 24px;
+    background: #FAFAFA;
+}
+
+.click_shop{
+    border-radius: 10px;
+	margin-left: 100px;
+	border: 2px solid black;
+}
+
+.new_products{
+	display: flex;
+	gap: 7px;
+	align-items: center;
+	color: var(--Dark-Gray, #232321);
+	font-weight: 600;
+	font-size: 22px;
+	padding: 5px;
+}
+
+.head_ul{
+    display: flex;
+    width: 301px;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 40px;
+}
+
+
+.head_ul{
+    display: flex;
+    width: 301px;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 40px;
+}
+
+.yel_circ{
+
+    align-items: center;
+    border-radius: 32px;
+    background: var(--Yellow, #FFA52F);
+	padding: 5px;
+}
+
+.bag{
+	padding-right: 0px;
+}

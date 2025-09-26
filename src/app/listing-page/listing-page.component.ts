@@ -29,10 +29,16 @@ export class ListingPageComponent {
       category_id: 0
     }
   ]
+
+  items_number:number = this.items.length
   //activeId:number = 0
 
   ngOnInit(){
     this.getAllItems()
+  }
+
+  ngOnChanges(){
+    this.items_number = this.items.length
   }
 
   getAllItems(){

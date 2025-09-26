@@ -1,28 +1,28 @@
 <div class="body">
     <div class="container">
         <div class="cont">
-            <ul class="head_ul1">
+            <a
+                routerLink="/listingPage"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                class="new_products"
+            >
+                <p>New products</p>
+                <img src="/fire.png" alt="">
+            </a>
+            <a
+                routerLink=""
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+            >
+                <img class="click_shop" width="170px" src="/click_shop_logo.png" alt="index.html">
+            </a>
+            <ul class="head_ul">
                 <li><a
                     routerLink="/listingPage"
                     routerLinkActive="active"
                     [routerLinkActiveOptions]="{ exact: true }"
-                    ><img src="/NewDrops.png" alt="">
-                  </a>
-                </li>
-                <li><a class="head_a" href="">
-                    <p>Men</p> 
-                </a></li>
-                <li><a class="head_a" href="">
-                    <p>Women</p>
-                </a></li>
-            </ul>
-            <a href=""><img src="/Group.png" alt="index.html"></a>
-            <ul class="head_ul2">
-                <li><a
-                    routerLink="/listingPage"
-                    routerLinkActive="active"
-                    [routerLinkActiveOptions]="{ exact: true }"
-                    ><button><img src="/Search.png" alt=""></button>
+                    ><img width="30px" src="/Search.png" alt="">
                   </a>
                 </li>
                 <li>
@@ -30,7 +30,7 @@
                     routerLink="/login"
                     routerLinkActive="active"
                     [routerLinkActiveOptions]="{ exact: true }"
-                    ><button><img src="/User.png" alt=""></button>
+                    ><img width="30px" src="/User.png" alt="">
                   </a>
                 </li>
                 <li>
@@ -38,12 +38,13 @@
                     routerLink="/bag"
                     routerLinkActive="active"
                     [routerLinkActiveOptions]="{ exact: true }"
-                    ><div class="yel_circ"><img src="/bagpic.png" alt=""></div>
+                    ><div class="yel_circ"><img class="bag" width="34px" src="/bag.png" alt=""></div>
                     </a>
                 </li>
             </ul>
         </div>
     </div>
+
 
     <div class="container">
         <div class="product_cont">

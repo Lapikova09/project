@@ -1,13 +1,7 @@
 .body{
-    max-width: 1440px;
-    margin: 0 auto;
-    padding-top: 32px;
-    font-family: Rubik;
     align-items: center;
     display: flex;
     flex-direction: column;
-    color: var(--Dark-Gray, #232321);
-    background: var(--Gray, #E7E7E3);
 }
 
 .get_off{
@@ -197,47 +191,6 @@
     display: flex;
     
 }
-.cont{
-    display: flex;
-    width: 1320px;
-    padding: 32px;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 24px;
-    background: #FAFAFA;
-}
-
-.head_ul1{
-    display: flex;
-    gap: 40px;
-}
-
-.head_a {
-    display: flex;
-    align-items: center;
-    margin-right: 2px;
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--Dark-Gray, #232321);
-}
-
-.head_ul2{
-    display: flex;
-    width: 301px;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 40px;
-}
-
-.yel_circ{
-    width: 32px;
-    height: 32px;
-    align-items: center;
-    padding-top: 5px;
-    border-radius: 32px;
-    background: var(--Yellow, #FFA52F);
-    padding: 7px;
-}
 
 .foot_cont{
     position: relative;
@@ -370,4 +323,9 @@
 
 .a{
     color: #FFF;
+}
+
+.price_cont{
+    display: flex;
+    gap: 20px;
 }
