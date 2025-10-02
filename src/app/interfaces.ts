@@ -5,7 +5,8 @@ export interface Item{
     info: string,
     img_url:string,
     stock:number,
-    category_id: number
+    category_id: number,
+    rating:number
 }
 
 export interface User{

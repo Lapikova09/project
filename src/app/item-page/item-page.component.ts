@@ -26,7 +26,8 @@ export class ItemPageComponent {
     info: '',
     img_url: '',
     stock: 0,
-    category_id: 0
+    category_id: 0,
+    rating: 3
   }
 
   ngOnInit(){

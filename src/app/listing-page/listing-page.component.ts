@@ -24,9 +24,10 @@ export class ListingPageComponent {
       name: 'привет',
       price: 12121,
       info: 'как дела',
-      img_url: '',
-      stock: 0,
-      category_id: 0
+      img_url: 'https://i.pinimg.com/736x/2d/3e/06/2d3e0659d1cd46aa54751f4ef7dab538.jpg',
+      stock: 123,
+      category_id: 0,
+      rating: 2.3
     }
   ]
 

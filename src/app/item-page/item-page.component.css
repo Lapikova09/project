@@ -189,7 +189,7 @@
 .size_cont{
     display: flex;
     justify-content: space-between;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 600;
     margin-top: 30px;
 }
@@ -197,34 +197,6 @@
 .size_chart{
     padding-top: 3px;
     padding-bottom: 3px;
-}
-
-.Ellipse{
-    width: 32px;
-    height: 32px;
-    border-radius: 16px;
-    background-color: #253043;
-}
-
-.Ellipse1{
-    width: 32px;
-    height: 32px;
-    border-radius: 16px;
-    background-color: #264726;
-}
-
-.Ellipse2{
-    width: 32px;
-    height: 32px;
-    border-radius: 16px;
-    background-color: #3a4e38;
-}
-
-.Ellipse3{
-    width: 32px;
-    height: 32px;
-    border-radius: 16px;
-    background-color: #db3806;
 }
 
 .first_line{
@@ -244,7 +216,7 @@
 }
 
 .product{
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 600;
     margin-top: 32px;
     margin-bottom: 8px;
@@ -288,4 +260,9 @@
 }
 .none{
     display: none;
+}
+
+.stars_cont{
+    display: flex;
+    gap: 5px;
 }

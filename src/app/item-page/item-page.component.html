@@ -60,33 +60,24 @@
             </div>
             <div class="release_cont">
                 <p class="adidas">{{item.name}}</p>
-                <p class="blue_text">${{item.price}}</p>
+                <p class="blue_text">{{item.price}}$</p>
                 <p class="color">{{item.info}}</p>
-                <div class="colors_cont">
-                    <div class="Ellipse1"></div>
-                </div>
                 <div class="size_cont">
-                    <p>SIZE</p>
-                    <img class="size_chart" src="/Button (8).png" alt="">
-                </div>
-                <div class="first_line">
-                    <button  id="but" class="white bg1 ">38</button>
-                    <button id="but" class="grey_b bg2">39</button>
-                    <button  id="but" class="white bg3">40</button>
-                    <button  id="but" class="white bg4">41</button>
-                    <button  id="but" class="white bg5">42</button>
-                    <button  id="but" class="white bg6">43</button>
-                    <button  id="but" class="white bg7">44</button>
-                    <button  id="but" class="white bg8">45</button>
-                    <button  id="but" class="white bg9">46</button>
-                    <button  id="but" class="white bg10">47</button>
-                    <p class="red_text none">Choose your size</p>
+                    <p>Rating: {{item.rating}}</p>
+                    <div class="stars_cont">
+                        <img *ngIf="item.rating > 0" class="size_chart" src="/star.png" alt="">
+                        <img *ngIf="item.rating > 1" class="size_chart" src="/star.png" alt="">
+                        <img *ngIf="item.rating > 2" class="size_chart" src="/star.png" alt="">
+                        <img *ngIf="item.rating > 3" class="size_chart" src="/star.png" alt="">
+                        <img *ngIf="item.rating > 4" class="size_chart" src="/star.png" alt="">
+                    </div> 
                 </div>
                 <div class="cart_cont">
                     <button class='add_to_cart1'><img src="/style_layer (2).png" alt=""></button>
                     <button><img src="/style_layer (3).png" alt=""></button>
                 </div>
                 <button class="buy"><img src="/Button (18).png" alt=""></button>  
+                <p class="size_cont">Stock: {{item.stock}}</p>
                 <p class="product">ABOUT THE PRODUCT</p>
                 <img src="{{item.img_url}}" alt="">
             </div>
