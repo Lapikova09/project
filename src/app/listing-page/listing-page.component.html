@@ -91,14 +91,15 @@
                 <div class="catalog">
                     <div *ngIf="items.length != 0">
                         <div class="card" *ngFor="let el of items" >
-                            <img src="{{el.img_url}}" alt="">
+                            <img class="item_img" src="{{el.img_url}}" alt="">
                             <p>{{el.name}}</p>
+                            <p>Rating: {{el.rating}}</p>
                             <a
                                 routerLink="/itemPage"
                                 routerLinkActive="active"
                                 [routerLinkActiveOptions]="{ exact: true }"
                             >
-                                <div (click)="getId(el.id)" class="but_pr"><img src="/img/Button (2).png" alt=""><span class="rect">{{el.price}}</span></div>
+                                <div (click)="getId(el.id)" class="but_cont"><img src="/Button (2).png" class="but_cont" alt=""><span class="price">{{el.price}}$</span></div>
                             </a>
                         </div>
                     </div>
