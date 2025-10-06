@@ -18,3 +18,10 @@ export interface User{
     created_at:string,
     role:string
 }
+
+export interface Category{
+    id:number, 
+    name:string,
+    parent_id: number | null; 
+    children: Category[];
+}

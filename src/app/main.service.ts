@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Item } from './interfaces';
+import { Category, Item } from './interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MainService {
-  apiUrl: string = '';
+  apiUrl: string = 'http://localhost:8000';
   activeItemId: number = 0 
 
   constructor(private http: HttpClient) {
@@ -15,13 +15,15 @@ export class MainService {
   }
 
   getItems(): Observable<Item[]> {
-    console.log("Gjkexbk")
-    return this.http.get<Item[]>(`${this.apiUrl}/items`);
+    return this.http.get<Item[]>(`${this.apiUrl}/items/all`);
   }
 
   getItemById(id:number){
-    console.log("Gjkexbk")
     return this.http.get<Item>(`${this.apiUrl}/items/${id}`);
+  }
+
+  getCategoriesNames(){
+    return this.http.get<Category>(`${this.apiUrl}/items/category`);
   }
 
 }

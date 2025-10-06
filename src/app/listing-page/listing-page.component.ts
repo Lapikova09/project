@@ -38,15 +38,11 @@ export class ListingPageComponent {
     this.getAllItems()
   }
 
-  ngOnChanges(){
-    this.items_number = this.items.length
-  }
-
   getAllItems(){
     this.apiService.getItems().subscribe({
       next: (data: Item[]) => {
         this.items = data;
-        console.log("Получил");
+        this.items_number = this.items.length
       },
       error: (err) => {
         console.error("Ошибка при получении данных:", err);

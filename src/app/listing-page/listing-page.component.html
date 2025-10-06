@@ -88,8 +88,8 @@
                         <button>Sort by date</button>
                     </ul>
                 </div>
-                <div class="catalog">
-                    <div *ngIf="items.length != 0">
+                <div >
+                    <div class="catalog" *ngIf="items.length != 0">
                         <div class="card" *ngFor="let el of items" >
                             <img class="item_img" src="{{el.img_url}}" alt="">
                             <p>{{el.name}}</p>
