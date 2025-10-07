@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MainService } from '../main.service';
-import { Item } from '../interfaces';
+import { Category, Item } from '../interfaces';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
@@ -31,11 +31,26 @@ export class ListingPageComponent {
     }
   ]
 
+  categories:Category[]=[
+    {
+      name:"asad",
+      id:1,
+      children:[],
+      parent_id: 0
+    },  {
+      name:"wddasds",
+      id:1,
+      children:[],
+      parent_id: 0
+    }
+  ]
+
   items_number:number = this.items.length
   //activeId:number = 0
 
   ngOnInit(){
-    this.getAllItems()
+    this.getAllItems(),
+    this.getAllCategories()
   }
 
   getAllItems(){
@@ -43,6 +58,17 @@ export class ListingPageComponent {
       next: (data: Item[]) => {
         this.items = data;
         this.items_number = this.items.length
+      },
+      error: (err) => {
+        console.error("Ошибка при получении данных:", err);
+      }
+    });
+  }
+
+  getAllCategories(){
+    this.apiService.getCategories().subscribe({
+      next: (data: Category[]) => {
+        this.categories = data;
       },
       error: (err) => {
         console.error("Ошибка при получении данных:", err);

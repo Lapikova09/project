@@ -45,7 +45,6 @@
         </div>
     </div>
 
-
     <div class="container">
         <p class="saving">Saving to celebrate </p>
         <p class="enjoy">Enjoy up to 60% off thousands of styles during the End of Year sale - while suppiles last. No code needed.</p>
@@ -108,12 +107,11 @@
                         <div>
                             <p class="or_text">Categories</p>
                             <ul class="gr_text">
-                                <a class="a" href="/listing_page.html"><li>Runners</li></a>
-                                <a class="a" href="/listing_page.html"><li>Sneakers</li></a>
-                                <a class="a" href="/listing_page.html"><li>Basketball</li></a>
-                                <a class="a" href="/listing_page.html"><li>Outdoor</li></a>
-                                <a class="a" href="/listing_page.html"><li>Golf</li></a>
-                                <a class="a" href="/listing_page.html"><li>Hiking</li></a>
+                                <div *ngFor="let el of categories">
+                                    <a class="a" href="/listing_page.html">
+                                        <div>{{el.name}}</div>
+                                    </a>
+                                </div>
                             </ul>
                         </div>
                         <div>

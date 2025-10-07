@@ -4,6 +4,7 @@ import { MainService } from '../main.service';
 import { Item } from '../interfaces';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Category } from '../interfaces';
 
 @Component({
   selector: 'app-item-page',
@@ -30,8 +31,23 @@ export class ItemPageComponent {
     rating: 3
   }
 
+  categories:Category[]=[
+    {
+      name:"asad",
+      id:1,
+      children:[],
+      parent_id: 0
+    },  {
+      name:"wddasds",
+      id:1,
+      children:[],
+      parent_id: 0
+    }
+  ]
+
   ngOnInit(){
-    this.getItem()
+    this.getItem(),
+    this.getAllCategories()
   }
 
   getItem(){
@@ -39,6 +55,17 @@ export class ItemPageComponent {
       next: (data: Item) => {
         this.item = data;
         console.log("Получил");
+      },
+      error: (err) => {
+        console.error("Ошибка при получении данных:", err);
+      }
+    });
+  }
+
+  getAllCategories(){
+    this.apiService.getCategories().subscribe({
+      next: (data: Category[]) => {
+        this.categories = data;
       },
       error: (err) => {
         console.error("Ошибка при получении данных:", err);

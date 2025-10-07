@@ -63,22 +63,19 @@
                     <div class="refine">
                         <p>CATEGORY</p>
                     </div>
-                    <ul class="type">
-                        <li><input id="butt" class="ch0 emp" type="checkbox"><label>Casual shoes</label></li>
-                        <li><input type="checkbox" id="butt" class="ch1 emp"><label>Runners</label></li>
-                        <li><input type="checkbox" id="butt" class="ch2 emp"><label>Hiking</label></li>
-                        <li><input type="checkbox" id="butt" class="ch3 emp"><label>Sneaker</label></li>
-                        <li><input type="checkbox" id="butt" class="ch4 emp"><label>Basketball</label></li>
-                        <li><input type="checkbox" id="butt" class="ch5 emp"><label>Golf</label></li>
-                        <li><input type="checkbox" id="butt" class="ch6 emp"><label>Outdoor</label></li>
-                    </ul>
+                    <div class="type">
+                        <div *ngFor="let el of categories">
+                            <input id="butt" class="ch0 emp" type="checkbox">
+                            <label>{{el.name}}</label>
+                        </div>
+                    </div>
                     <div class="refine">
                         <p>PRICE</p>
                     </div>
-                    <ul class="type">
-                        <li><input type="number" id="buts" class="ch7 emp"><label>From</label></li>
-                        <li><input type="number" id="buts" class="ch8 emp"><label>To</label></li>
-                    </ul>
+                    <div class="refine">
+                        <div><label>From</label><input class="money_filter" type="number"></div>
+                        <div><label>To</label><input class="money_filter" type="number"></div>
+                    </div>
                     <ul class="type">
                         <div class="price_cont">
                             <button>Sort by price</button>
@@ -130,14 +127,13 @@
                         <div class="lit_cont2">
                             <div>
                                 <p class="or_text">Categories</p>
-                                <ul class="gr_text">
-                                    <a class="a" href="/listing_page.html"><li>Runners</li></a>
-                                    <a class="a" href="/listing_page.html"><li>Sneakers</li></a>
-                                    <a class="a" href="/listing_page.html"><li>Basketball</li></a>
-                                    <a class="a" href="/listing_page.html"><li>Outdoor</li></a>
-                                    <a class="a" href="/listing_page.html"><li>Golf</li></a>
-                                    <a class="a" href="/listing_page.html"><li>Hiking</li></a>
-                                </ul>
+                                <div class="gr_text">
+                                    <div *ngFor="let el of categories">
+                                        <a class="a" href="/listing_page.html">
+                                            <div>{{el.name}}</div>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                             <div>
                                 <p class="or_text">Company</p>

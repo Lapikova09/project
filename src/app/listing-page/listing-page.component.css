@@ -135,3 +135,16 @@
     width:260px;
     border-radius: 20px;
 }
+
+.money_filter{
+    width: 150px;
+    border: 2px solid #232321;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.money_filter::placeholder{
+    color: #232321;
+    font-weight: 600;
+    font-size: 20px;
+}

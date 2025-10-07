@@ -127,12 +127,11 @@
                         <div>
                             <p class="or_text">Categories</p>
                             <ul class="gr_text">
-                                <a class="a" href="/listing_page.html"><li>Runners</li></a>
-                                <a class="a" href="/listing_page.html"><li>Sneakers</li></a>
-                                <a class="a" href="/listing_page.html"><li>Basketball</li></a>
-                                <a class="a" href="/listing_page.html"><li>Outdoor</li></a>
-                                <a class="a" href="/listing_page.html"><li>Golf</li></a>
-                                <a class="a" href="/listing_page.html"><li>Hiking</li></a>
+                                <div *ngFor="let el of categories">
+                                    <a class="a" href="/listing_page.html">
+                                        <div>{{el.name}}</div>
+                                    </a>
+                                </div>
                             </ul>
                         </div>
                         <div>

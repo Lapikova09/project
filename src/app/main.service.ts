@@ -22,8 +22,8 @@ export class MainService {
     return this.http.get<Item>(`${this.apiUrl}/items/${id}`);
   }
 
-  getCategoriesNames(){
-    return this.http.get<Category>(`${this.apiUrl}/items/category`);
+  getCategories(){
+    return this.http.get<Category[]>(`${this.apiUrl}/items/category`);
   }
 
 }
