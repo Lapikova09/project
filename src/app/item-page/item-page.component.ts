@@ -72,4 +72,15 @@ export class ItemPageComponent {
       }
     });
   }
+
+  postItem(){
+    this.apiService.postItemIntoBag(this.activeId, 6).subscribe({
+      next: (response: any) => {
+        console.log("Товар добавлен в корзину:", response);
+      },
+      error: (err) => {
+        console.error("Ошибка при получении данных:", err);
+      }
+    });
+  }
 }

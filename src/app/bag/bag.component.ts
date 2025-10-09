@@ -3,7 +3,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MainService } from '../main.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Category } from '../interfaces';
+import { BagItem, Category, Item } from '../interfaces';
 
 @Component({
   selector: 'app-bag',
@@ -31,8 +31,11 @@ export class BagComponent {
     }
   ]
 
+  items:BagItem[]=[]
+
   ngOnInit(){
-    this.getAllCategories()
+    this.getAllCategories(), 
+    this.getItems()
   }
   
   getAllCategories(){
@@ -46,4 +49,15 @@ export class BagComponent {
     });
   }
   
+  getItems(){
+    this.apiService.getBagItems(6).subscribe({
+      next: (data: BagItem[]) => {
+        this.items = data;
+        console.log('dfsdfsd')
+      },
+      error: (err) => {
+        console.error("Ошибка при получении данных:", err);
+      }
+    });
+  }
 }

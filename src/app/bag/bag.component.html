@@ -53,7 +53,27 @@
             <div class="your_bag">
                 <p class="your_bag_text">Your Bag</p>
                 <p class="items">Items in your bag not reserved- check out now to make them yours.</p>
-                <div class="cart_list"></div>
+                <div *ngIf="items.length != 0" class="cart_list">
+                    <div class="card" *ngFor="let el of items" >
+                        <img src="" alt="">
+                        <div class="card_text">
+                            <div class="prize">
+                                <p>{{el.item_name}}</p>
+                                <p class="purp">{{el.full_price}} $</p>
+                            </div>
+                            <p class="grey">Men’s Road Running Shoes</p>
+                            <p class="grey">Enamel Blue/ University White</p>
+                            <div class="size_quan">
+                                <p class="grey">Count: {{el.count}}</p>
+                                <button><img src="/chevron_down.png" alt=""></button>
+                            </div>
+                            <div class="like">
+                                <button><img src="/heart.png" alt=""></button>
+                                <button class='deleteCard'><img src="/Bin.png" alt=""></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="summary">
                 <p class="your_bag_text">Order Summary</p>
@@ -95,7 +115,7 @@
                         <button><img src="/style_layer.png" alt=""></button>
                     </div>
                 </div>
-                <a href=""><img src="/img/Group 1.png" alt=""></a>
+                <a href=""><img src="/Group 1.png" alt=""></a>
             </div>
             <div class="grey_cont">
                 <div class="lit_cont">

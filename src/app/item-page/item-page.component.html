@@ -48,20 +48,9 @@
 
     <div class="container">
         <div class="product_cont">
-            <div class="pict_cont">
-                <div class="pict1">
-                    <img class="img1" src="/s-l500 (1).jpg" alt="">
-                    <img src="/s-l1600 (1).jpg" alt="">
-                </div>
-                <div class="pict2">
-                    <img class="img1" src="/s-l1600 (2).jpg" alt="">
-                    <img src="/s-l1600 (3).jpg" alt="">
-                </div>
-            </div>
             <div class="release_cont">
                 <p class="adidas">{{item.name}}</p>
                 <p class="blue_text">{{item.price}}$</p>
-                <p class="color">{{item.info}}</p>
                 <div class="size_cont">
                     <p>Rating: {{item.rating}}</p>
                     <div class="stars_cont">
@@ -76,9 +65,10 @@
                     <button class='add_to_cart1'><img src="/style_layer (2).png" alt=""></button>
                     <button><img src="/style_layer (3).png" alt=""></button>
                 </div>
-                <button class="buy"><img src="/Button (18).png" alt=""></button>  
+                <div (click)="postItem()" class="buy"><img src="/Button (18).png" alt=""></div>  
                 <p class="size_cont">Stock: {{item.stock}}</p>
                 <p class="product">ABOUT THE PRODUCT</p>
+                <p class="color">{{item.info}}</p>
                 <img src="{{item.img_url}}" alt="">
             </div>
         </div>

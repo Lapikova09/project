@@ -13,7 +13,6 @@ export interface User{
     id:number,
     name:string,
     email:string,
-    age:number,
     money:number,
     created_at:string,
     role:string
@@ -24,4 +23,15 @@ export interface Category{
     name:string,
     parent_id: number | null; 
     children: Category[];
+}
+
+export interface BagItem{
+    id: number,
+    item_id: number,
+    item_name: string,
+    images: string,
+    count: number,
+    full_price: number,
+    rating: number
+
 }
