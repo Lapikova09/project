@@ -11,7 +11,7 @@
                 <img src="/fire.png" alt="">
             </a>
             <a
-                routerLink="/mainPage"
+                routerLink=""
                 routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }"
             >
@@ -65,11 +65,7 @@
                             <p class="grey">Enamel Blue/ University White</p>
                             <div class="size_quan">
                                 <p class="grey">Count: {{el.count}}</p>
-                                <button><img src="/chevron_down.png" alt=""></button>
-                            </div>
-                            <div class="like">
-                                <button><img src="/heart.png" alt=""></button>
-                                <button class='deleteCard'><img src="/Bin.png" alt=""></button>
+                                <div (click)="deleteItem(el.item_id)" class='deleteCard'><img src="/Bin.png" alt=""></div>
                             </div>
                         </div>
                     </div>

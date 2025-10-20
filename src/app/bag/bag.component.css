@@ -100,6 +100,7 @@
 .size_quan{
     display: flex;
     margin-bottom: 12px;
+    justify-content: space-between;
 }
 
 .size_quan button{

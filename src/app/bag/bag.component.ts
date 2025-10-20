@@ -31,7 +31,17 @@ export class BagComponent {
     }
   ]
 
-  items:BagItem[]=[]
+  items:BagItem[]=[
+    {
+      id: 0,
+      item_name: 'dscsdcsdcds',
+      item_id: 0,
+      count: 2,
+      images: '',
+      full_price: 2312,
+      rating: 3
+    }
+  ]
 
   ngOnInit(){
     this.getAllCategories(), 
@@ -53,10 +63,22 @@ export class BagComponent {
     this.apiService.getBagItems(6).subscribe({
       next: (data: BagItem[]) => {
         this.items = data;
-        console.log('dfsdfsd')
+        console.log('Товары успешно получены')
       },
       error: (err) => {
         console.error("Ошибка при получении данных:", err);
+      }
+    });
+  }
+
+  deleteItem(itemId:number){
+    this.apiService.deleteItemFromBag(itemId, 6).subscribe({
+      next: (response: any) => {
+        console.log('Товар удален', response)
+        this.getItems()
+      },
+      error: (err) => {
+        console.error("Ошибка при получении данных:", err)
       }
     });
   }

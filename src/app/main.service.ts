@@ -35,4 +35,9 @@ export class MainService {
     const param = new HttpParams().set('user_id', userId.toString());
     return this.http.get<BagItem[]>(`${this.apiUrl}/basket`, { params: param });
   }
+
+  deleteItemFromBag(itemId:number, userId:number){
+    const param = new HttpParams().set('user_id', userId.toString());
+    return this.http.delete<BagItem>(`${this.apiUrl}/basket/${itemId}`, { params: param });
+  }
 }
