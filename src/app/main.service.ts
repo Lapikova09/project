@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams  } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Category, Item, BagItem } from './interfaces';
 
@@ -14,30 +14,70 @@ export class MainService {
     
   }
 
+  token:string =''
+
   getItems(): Observable<Item[]> {
-    return this.http.get<Item[]>(`${this.apiUrl}/items/all`);
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`,
+    });
+    return this.http.get<Item[]>(`${this.apiUrl}/items/all`,  { headers });
   }
 
   getItemById(id:number){
-    return this.http.get<Item>(`${this.apiUrl}/items/${id}`);
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`,
+    });
+    return this.http.get<Item>(`${this.apiUrl}/items/${id}`,  { headers });
   }
 
   getCategories(){
-    return this.http.get<Category[]>(`${this.apiUrl}/items/category`);
+    return this.http.get<Category[]>(`${this.apiUrl}/category`);
   }
 
-  postItemIntoBag(itemId: number, userId: number): Observable<any> {
-    const params = new HttpParams().set('user_id', userId.toString());
-    return this.http.post(`${this.apiUrl}/basket/${itemId}`, {}, { params: params });
+  postItemIntoBag(itemId: number, count: number): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`,
+    });
+    const params = new HttpParams().set('count', count.toString());
+    console.log(count + "sssss")
+    
+    const options = {
+      headers: headers,
+      params: params
+    };
+
+    return this.http.post(`${this.apiUrl}/basket/${itemId}`, {}, options);
   }
 
   getBagItems(userId:number){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`,
+    });
     const param = new HttpParams().set('user_id', userId.toString());
-    return this.http.get<BagItem[]>(`${this.apiUrl}/basket`, { params: param });
+    
+    const options = {
+      headers: headers,
+      params: param
+    };
+
+    return this.http.get<BagItem[]>(`${this.apiUrl}/basket`, options);
   }
 
   deleteItemFromBag(itemId:number, userId:number){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`
+    });
     const param = new HttpParams().set('user_id', userId.toString());
-    return this.http.delete<BagItem>(`${this.apiUrl}/basket/${itemId}`, { params: param });
+    
+    const options = {
+      headers: headers,
+      params: param
+    };
+
+    return this.http.delete<BagItem>(`${this.apiUrl}/basket/${itemId}`, options);
+  }
+
+  login(data:any): Observable<any>{
+    return this.http.post(`${this.apiUrl}/login`, data);
   }
 }

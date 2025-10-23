@@ -43,6 +43,11 @@ export class LoginComponent {
       parent_id: 0
     }
   ]
+
+  loginData ={
+    email: "pvdr260@gmail.com",
+    password_hash: "qwe"
+  }
   
   ngOnInit(){
     this.getAllCategories()
@@ -55,6 +60,19 @@ export class LoginComponent {
       },
       error: (err) => {
         console.error("Ошибка при получении данных:", err);
+      }
+    });
+  }
+
+  login(){
+    this.apiService.login(this.loginData).subscribe({
+      next: (response) => {
+        console.log('Успешно:', response);
+        console.log(response.access_token)
+        this.apiService.token = response.access_token
+      },
+      error: (error) => {
+        console.error('Ошибка:', error);
       }
     });
   }

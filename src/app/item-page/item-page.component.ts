@@ -74,7 +74,7 @@ export class ItemPageComponent {
   }
 
   postItem(){
-    this.apiService.postItemIntoBag(this.activeId, 6).subscribe({
+    this.apiService.postItemIntoBag(this.activeId, 1).subscribe({
       next: (response: any) => {
         console.log("Товар добавлен в корзину:", response);
       },

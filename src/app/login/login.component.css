@@ -50,6 +50,7 @@
     border-radius: 8px;
     padding: 10px 16px 10px 16px;
     margin-top: 24px;
+    margin-bottom: 24px;
 }
 
 .password::placeholder{
@@ -59,29 +60,6 @@
     font-weight: 400;
     line-height: 19px;
     letter-spacing: 0.5px;
-}
-
-.keep_loged{
-    margin-top: 24px;
-    display: flex;
-    margin-bottom: 24px;
-    align-items: center;
-}
-
-.keep_loged input{  
-    margin-right: 13px;
-
-}
-
-.keep_loged label{
-    font-family: Open Sans;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 22px;
-}
-
-.keep_loged label p {
-    text-decoration-line: underline;
 }
 
 .social{
@@ -177,26 +155,6 @@
     font-weight: 400;
     line-height: 19px;
     letter-spacing: 0.5px;
-}
-
-.gender{
-    display: flex;
-    margin-top: 21px;
-}
-
-.gender input{
-    margin-right: 4px;
-    background: rgb(31, 26, 36);
-    width: 18px;
-    height: 18px;
-}
-
-.gender label{
-    margin-right: 36px;
-    font-family: Open Sans;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 22px;
 }
 
 .little_text{
