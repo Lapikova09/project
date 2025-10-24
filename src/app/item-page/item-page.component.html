@@ -67,6 +67,10 @@
                 </div>
                 <div (click)="postItem()" class="buy"><img src="/Button (18).png" alt=""></div>  
                 <p class="size_cont">Stock: {{item.stock}}</p>
+                <div class="count_cont">
+                    <div class="count">Count:</div>
+                    <input [(ngModel)]="count" class="count_input" type="number">
+                </div>
                 <p class="product">ABOUT THE PRODUCT</p>
                 <p class="color">{{item.info}}</p>
                 <img src="{{item.img_url}}" alt="">

@@ -16,11 +16,27 @@ export class MainService {
 
   token:string =''
 
-  getItems(): Observable<Item[]> {
+  getItems(min_price:number|null, max_price:number|null, sort_type:string): Observable<Item[]> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.token}`,
     });
-    return this.http.get<Item[]>(`${this.apiUrl}/items/all`,  { headers });
+
+    let params = new HttpParams();
+      
+    if (min_price !== null) {
+      params = params.set('min_price', min_price.toString());
+    }
+    if (max_price !== null) {
+      params = params.set('max_price', max_price.toString());
+    }
+    if(sort_type) params=params.set('sort_type', sort_type)
+
+    const options = {
+      headers: headers,
+      params: params
+    };
+
+    return this.http.get<Item[]>(`${this.apiUrl}/items/all`, options);
   }
 
   getItemById(id:number){
@@ -39,7 +55,6 @@ export class MainService {
       'Authorization': `Bearer ${this.token}`,
     });
     const params = new HttpParams().set('count', count.toString());
-    console.log(count + "sssss")
     
     const options = {
       headers: headers,

@@ -47,6 +47,9 @@ export class ListingPageComponent {
 
   items_number:number = this.items.length
   //activeId:number = 0
+  min_price:number|null = null
+  max_price:number|null = null
+  sort_type:string =''
 
   ngOnInit(){
     this.getAllItems(),
@@ -54,7 +57,7 @@ export class ListingPageComponent {
   }
 
   getAllItems(){
-    this.apiService.getItems().subscribe({
+    this.apiService.getItems(this.min_price, this.max_price, this.sort_type).subscribe({
       next: (data: Item[]) => {
         this.items = data;
         this.items_number = this.items.length
@@ -79,5 +82,10 @@ export class ListingPageComponent {
   getId(id:number){
     //this.activeId = id
     this.apiService.activeItemId = id
+  }
+
+  sort(type:string){
+    this.sort_type = type
+    this.getAllItems()
   }
 }

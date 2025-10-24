@@ -73,17 +73,19 @@
                         <p>PRICE</p>
                     </div>
                     <div class="refine">
-                        <div><label>From</label><input class="money_filter" type="number"></div>
-                        <div><label>To</label><input class="money_filter" type="number"></div>
+                        <div><label>From</label><input [(ngModel)]="min_price"  (input)="getAllItems()" class="money_filter" type="number"></div>
+                        <div><label>To</label><input [(ngModel)]="max_price" (input)="getAllItems()" class="money_filter" type="number"></div>
                     </div>
                     <ul class="sort">
+                        <p class="refine">Sort</p>
+                        <div (click)="sort('rating_desc')">Sort by rating</div>
+                        <div (click)="sort('date_desc')">Sort by date</div>
+                        <div (click)="sort('by_preference')">Sort by preference</div>
                         <p class="refine">Sort by price</p>
                         <ul class="price_cont">
-                            <div>From the <br> cheapest</div>
-                            <div>From the most expensive</div>
+                            <div (click)="sort('price_asc')">From the <br> cheapest</div>
+                            <div (click)="sort('price_desc')">From the most expensive</div>
                         </ul>
-                        <div>Sort by rating</div>
-                        <div>Sort by date</div>
                     </ul>
                 </div>
                 <div >

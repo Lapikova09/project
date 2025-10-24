@@ -45,6 +45,8 @@ export class ItemPageComponent {
     }
   ]
 
+  count:number = 1
+
   ngOnInit(){
     this.getItem(),
     this.getAllCategories()
@@ -57,6 +59,7 @@ export class ItemPageComponent {
         console.log("Получил");
       },
       error: (err) => {
+        console.log(this.activeId)
         console.error("Ошибка при получении данных:", err);
       }
     });
@@ -74,7 +77,7 @@ export class ItemPageComponent {
   }
 
   postItem(){
-    this.apiService.postItemIntoBag(this.activeId, 1).subscribe({
+    this.apiService.postItemIntoBag(this.activeId, this.count).subscribe({
       next: (response: any) => {
         console.log("Товар добавлен в корзину:", response);
       },
