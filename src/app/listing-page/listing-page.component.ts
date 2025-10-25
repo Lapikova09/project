@@ -50,6 +50,7 @@ export class ListingPageComponent {
   min_price:number|null = null
   max_price:number|null = null
   sort_type:string =''
+  page:number = 1
 
   ngOnInit(){
     this.getAllItems(),
@@ -57,7 +58,7 @@ export class ListingPageComponent {
   }
 
   getAllItems(){
-    this.apiService.getItems(this.min_price, this.max_price, this.sort_type).subscribe({
+    this.apiService.getItems(this.min_price, this.max_price, this.sort_type, this.page).subscribe({
       next: (data: Item[]) => {
         this.items = data;
         this.items_number = this.items.length
@@ -87,5 +88,31 @@ export class ListingPageComponent {
   sort(type:string){
     this.sort_type = type
     this.getAllItems()
+  }
+
+  getNextPage(){
+    this.page++;
+    this.apiService.getItems(this.min_price, this.max_price, this.sort_type, this.page).subscribe({
+      next: (data: Item[]) => {
+        this.items = data;
+        this.items_number = this.items.length
+      },
+      error: (err) => {
+        console.error("Ошибка при получении данных:", err);
+      }
+    });
+  }
+
+  getPreviousPage(){
+    this.page--;
+    this.apiService.getItems(this.min_price, this.max_price, this.sort_type, this.page).subscribe({
+      next: (data: Item[]) => {
+        this.items = data;
+        this.items_number = this.items.length
+      },
+      error: (err) => {
+        console.error("Ошибка при получении данных:", err);
+      }
+    });
   }
 }

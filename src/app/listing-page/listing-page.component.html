@@ -65,7 +65,7 @@
                     </div>
                     <div class="type">
                         <div *ngFor="let el of categories">
-                            <input id="butt" class="ch0 emp" type="checkbox">
+                            <input id="butt" class="ch0 emp" type="radio">
                             <label>{{el.name}}</label>
                         </div>
                     </div>
@@ -102,6 +102,10 @@
                                 <div (click)="getId(el.id)" class="but_cont"><img src="/Button (2).png" class="but_cont" alt=""><span class="price">{{el.price}}$</span></div>
                             </a>
                         </div>
+                    </div>
+                    <div class="pages_cont">
+                        <div (click)="getPreviousPage()"><img width="70px" src="Frame 2 (1).png" alt=""></div>
+                        <div (click)="getNextPage()"><img width="70px" src="/Frame 2 (2).png" alt=""></div>
                     </div>
                 </div>
             </div>
