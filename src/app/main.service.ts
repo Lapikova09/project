@@ -16,7 +16,7 @@ export class MainService {
 
   //Выход за предел страниц, фильтрация по категориям и ее приколы
 
-  getItems(min_price:number|null, max_price:number|null, sort_type:string, page:number): Observable<Item[]> {
+  getItems(min_price:number|null, max_price:number|null, sort_type:string, page:number, categoryID:number|null): Observable<Item[]> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.token}`,
     });
@@ -31,6 +31,10 @@ export class MainService {
     }
     if(sort_type) params=params.set('sort_type', sort_type)
     params=params.set('page', page)
+
+    if (categoryID !== null) {
+      params = params.set('category', categoryID.toString());
+    }
 
     const options = {
       headers: headers,

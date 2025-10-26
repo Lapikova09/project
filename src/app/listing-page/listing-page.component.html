@@ -65,8 +65,10 @@
                     </div>
                     <div class="type">
                         <div *ngFor="let el of categories">
-                            <input id="butt" class="ch0 emp" type="radio">
-                            <label>{{el.name}}</label>
+                            <label>
+                                <input [value]="el.id" name="radioGroup" type="radio" (change)="onCategoryChange(el.id)">
+                                {{el.name}}
+                            </label>
                         </div>
                     </div>
                     <div class="refine">

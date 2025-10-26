@@ -51,6 +51,7 @@ export class ListingPageComponent {
   max_price:number|null = null
   sort_type:string =''
   page:number = 1
+  selectedCategoryId:number|null = null
 
   ngOnInit(){
     this.getAllItems(),
@@ -58,7 +59,7 @@ export class ListingPageComponent {
   }
 
   getAllItems(){
-    this.apiService.getItems(this.min_price, this.max_price, this.sort_type, this.page).subscribe({
+    this.apiService.getItems(this.min_price, this.max_price, this.sort_type, this.page, this.selectedCategoryId).subscribe({
       next: (data: Item[]) => {
         this.items = data;
         this.items_number = this.items.length
@@ -92,27 +93,16 @@ export class ListingPageComponent {
 
   getNextPage(){
     this.page++;
-    this.apiService.getItems(this.min_price, this.max_price, this.sort_type, this.page).subscribe({
-      next: (data: Item[]) => {
-        this.items = data;
-        this.items_number = this.items.length
-      },
-      error: (err) => {
-        console.error("Ошибка при получении данных:", err);
-      }
-    });
+    this.getAllItems()
   }
 
   getPreviousPage(){
     this.page--;
-    this.apiService.getItems(this.min_price, this.max_price, this.sort_type, this.page).subscribe({
-      next: (data: Item[]) => {
-        this.items = data;
-        this.items_number = this.items.length
-      },
-      error: (err) => {
-        console.error("Ошибка при получении данных:", err);
-      }
-    });
+    this.getAllItems()
+  }
+
+  onCategoryChange(categoryId:number){
+    this.selectedCategoryId = categoryId
+    this.getAllItems()
   }
 }
