@@ -14,7 +14,7 @@ export class MainService {
 
   token:string =''
 
-  //Выход за предел страниц, фильтрация по категориям и ее приколы
+  //Выход за предел страниц, сумма корзины, не открываются страницы товаров, фотки и слайдеры, регистрация 
 
   getItems(min_price:number|null, max_price:number|null, sort_type:string, page:number, categoryID:number|null): Observable<Item[]> {
     const headers = new HttpHeaders({

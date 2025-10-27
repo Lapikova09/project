@@ -33,5 +33,4 @@ export interface BagItem{
     count: number,
     full_price: number,
     rating: number
-
 }

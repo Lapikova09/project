@@ -57,18 +57,24 @@
             </div>
             <div class="catalog_cont">
                 <div class="filters">
-                    <div class="f_cont">
-                        <p class="filt">Filters</p>
-                    </div>    
+                    <p class="filt">Filters</p>
                     <div class="refine">
                         <p>CATEGORY</p>
                     </div>
                     <div class="type">
                         <div *ngFor="let el of categories">
                             <label>
-                                <input [value]="el.id" name="radioGroup" type="radio" (change)="onCategoryChange(el.id)">
+                                <input [value]="el.id" name="radioGroupCategory" type="radio" (change)="onCategoryChange(el.id, 'category')">
                                 {{el.name}}
                             </label>
+                            <div *ngIf="selectedCategoryIdForChildren == el.id">
+                                <div class="child" *ngFor="let child of el.children">
+                                    <label>
+                                        <input [value]="child.id" name="radioGroupChildren" type="radio" (change)="onCategoryChange(child.id, 'child')">
+                                        {{child.name}}
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="refine">
@@ -78,16 +84,16 @@
                         <div><label>From</label><input [(ngModel)]="min_price"  (input)="getAllItems()" class="money_filter" type="number"></div>
                         <div><label>To</label><input [(ngModel)]="max_price" (input)="getAllItems()" class="money_filter" type="number"></div>
                     </div>
+                    <p class="filt">Sorting</p>
                     <ul class="sort">
-                        <p class="refine">Sort</p>
-                        <div (click)="sort('rating_desc')">Sort by rating</div>
-                        <div (click)="sort('date_desc')">Sort by date</div>
-                        <div (click)="sort('by_preference')">Sort by preference</div>
-                        <p class="refine">Sort by price</p>
-                        <ul class="price_cont">
-                            <div (click)="sort('price_asc')">From the <br> cheapest</div>
-                            <div (click)="sort('price_desc')">From the most expensive</div>
-                        </ul>
+                        <div class="sort_but" (click)="sort('rating_desc')">Sort by rating</div>
+                        <div class="sort_but" (click)="sort('date_desc')">Sort by date</div>
+                        <div class="sort_but" (click)="sort('by_preference')">Sort by preference</div>
+                    </ul>
+                    <p class="refine">SORT BY PRICE</p>
+                    <ul class="price_cont">
+                        <div class="sort_but" (click)="sort('price_asc')">From the <br> cheapest</div>
+                        <div class="sort_but" (click)="sort('price_desc')">From the most expensive</div>
                     </ul>
                 </div>
                 <div >

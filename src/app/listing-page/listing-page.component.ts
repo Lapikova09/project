@@ -52,6 +52,7 @@ export class ListingPageComponent {
   sort_type:string =''
   page:number = 1
   selectedCategoryId:number|null = null
+  selectedCategoryIdForChildren:number|null = null
 
   ngOnInit(){
     this.getAllItems(),
@@ -101,7 +102,10 @@ export class ListingPageComponent {
     this.getAllItems()
   }
 
-  onCategoryChange(categoryId:number){
+  onCategoryChange(categoryId:number, key:string){
+    if(key == 'category'){
+      this.selectedCategoryIdForChildren = categoryId
+    }
     this.selectedCategoryId = categoryId
     this.getAllItems()
   }

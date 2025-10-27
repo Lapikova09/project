@@ -68,7 +68,6 @@ export class LoginComponent {
     this.apiService.login(this.loginData).subscribe({
       next: (response) => {
         console.log('Успешно:', response);
-        console.log(response.access_token)
         this.apiService.token = response.access_token
       },
       error: (error) => {

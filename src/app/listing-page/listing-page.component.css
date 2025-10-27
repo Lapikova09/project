@@ -42,13 +42,6 @@
     gap: 10px;
 }
 
-.f_cont{
-    display: flex;
-    justify-content: space-between;
-    height: 35px;
-    margin-bottom: 20px;
-}
-
 .catalog{
     width: 986px;
     display: flex;
@@ -159,7 +152,7 @@
     gap: 5px;
 }
 
-.sort div{
+.sort_but{
     background-color: #232321;
     color: white;
     padding: 5px;
@@ -173,4 +166,9 @@
     display: flex;
     justify-content: center;
     gap: 20px;
+}
+
+.child{
+    margin-left: 30px;
+    margin-top: 5px;
 }
