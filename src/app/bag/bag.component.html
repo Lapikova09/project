@@ -50,8 +50,8 @@
             <div class="your_bag">
                 <p class="your_bag_text">Your Bag</p>
                 <p class="items">Items in your bag not reserved- check out now to make them yours.</p>
-                <div *ngIf="items.length != 0" class="cart_list">
-                    <div class="card" *ngFor="let el of items" >
+                <div *ngIf="bag.items.length != 0" class="cart_list">
+                    <div class="card" *ngFor="let el of bag.items" >
                         <img src="" alt="">
                         <div class="card_text">
                             <div class="prize">
@@ -72,11 +72,11 @@
                 <p class="your_bag_text">Order Summary</p>
                 <div class="item">
                     <p>Summery</p>
-                    <p class="summary_"></p>
+                    <p class="summary_">{{bag.full_price}}$</p>
                 </div>
                 <div class="item">
                     <p>Count</p>
-                    <p class="quantity"></p>
+                    <p class="quantity">{{bag.item_count}}</p>
                 </div>
                 <button><img src="/checkout.png" alt=""></button>
             </div>

@@ -89,7 +89,6 @@ html,body{
 
     color: var(--Dark-Gray, #232321);
     background: var(--Gray, #E7E7E3);
-
 }
 
 .container{
@@ -169,6 +168,7 @@ html,body{
     height: 545px;
     border-radius: 48px;
     background: var(--Blue, #4A69E2);
+    margin-bottom: 386px;
 }
 
 .purp_text{

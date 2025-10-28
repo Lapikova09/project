@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Category, Item, BagItem } from './interfaces';
+import { Category, Item, BagItem, Catalog, Bag } from './interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +12,19 @@ export class MainService {
 
   constructor(private http: HttpClient) {}
 
-  token:string =''
+  token:string = ''
 
-  //Выход за предел страниц, сумма корзины, не открываются страницы товаров, фотки и слайдеры, регистрация 
+  //Выход за предел страниц, фотки и слайдеры
+  //регистрация и верификация
 
-  getItems(min_price:number|null, max_price:number|null, sort_type:string, page:number, categoryID:number|null): Observable<Item[]> {
+  // Сброс фильтров, визуально понятно, какая сортировка
+  // Поле для второго пароля
+  // Комментарии(изначально видно не все), а также их добавление, звездочки(нет)
+  // Страницы для админа
+  // Страница с данными и выходом из профиля
+  
+
+  getItems(min_price:number|null, max_price:number|null, sort_type:string, page:number, categoryID:number|null): Observable<Catalog> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.token}`,
     });
@@ -41,7 +49,7 @@ export class MainService {
       params: params
     };
 
-    return this.http.get<Item[]>(`${this.apiUrl}/items/all`, options);
+    return this.http.get<Catalog>(`${this.apiUrl}/items/all`, options);
   }
 
   getItemById(id:number){
@@ -80,7 +88,7 @@ export class MainService {
       params: param
     };
 
-    return this.http.get<BagItem[]>(`${this.apiUrl}/basket`, options);
+    return this.http.get<Bag>(`${this.apiUrl}/basket`, options);
   }
 
   deleteItemFromBag(itemId:number, userId:number){
@@ -97,7 +105,16 @@ export class MainService {
     return this.http.delete<BagItem>(`${this.apiUrl}/basket/${itemId}`, options);
   }
 
-  login(data:any): Observable<any>{
-    return this.http.post(`${this.apiUrl}/login`, data);
+  login(password:string, username:string): Observable<any>{
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    });
+
+    const body = new HttpParams()
+      .set('password', password)
+      .set('username', username);
+
+    return this.http.post(`${this.apiUrl}/login`, body.toString(), { headers });
   }
 }

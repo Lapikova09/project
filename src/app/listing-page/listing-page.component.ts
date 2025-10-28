@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MainService } from '../main.service';
-import { Category, Item } from '../interfaces';
+import { Catalog, Category, Item } from '../interfaces';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
@@ -14,22 +14,13 @@ import { CommonModule } from '@angular/common';
 })
 export class ListingPageComponent {
 
-  constructor(private apiService:MainService){
+  constructor(private apiService:MainService){}
 
+  catalog:Catalog={
+    items:[],
+    current_page: 0,
+    max_page: 0
   }
-
-  items:Item[]=[
-    {
-      id: 0,
-      name: 'привет',
-      price: 12121,
-      info: 'как дела',
-      img_url: 'https://i.pinimg.com/736x/2d/3e/06/2d3e0659d1cd46aa54751f4ef7dab538.jpg',
-      stock: 123,
-      category_id: 0,
-      rating: 2.3
-    }
-  ]
 
   categories:Category[]=[
     {
@@ -45,8 +36,7 @@ export class ListingPageComponent {
     }
   ]
 
-  items_number:number = this.items.length
-  //activeId:number = 0
+  items_number:number = this.catalog.items.length
   min_price:number|null = null
   max_price:number|null = null
   sort_type:string =''
@@ -61,9 +51,9 @@ export class ListingPageComponent {
 
   getAllItems(){
     this.apiService.getItems(this.min_price, this.max_price, this.sort_type, this.page, this.selectedCategoryId).subscribe({
-      next: (data: Item[]) => {
-        this.items = data;
-        this.items_number = this.items.length
+      next: (data: Catalog) => {
+        this.catalog = data;
+        this.items_number = this.catalog.items.length
       },
       error: (err) => {
         console.error("Ошибка при получении данных:", err);
@@ -83,7 +73,6 @@ export class ListingPageComponent {
   }
 
   getId(id:number){
-    //this.activeId = id
     this.apiService.activeItemId = id
   }
 
@@ -107,6 +96,12 @@ export class ListingPageComponent {
       this.selectedCategoryIdForChildren = categoryId
     }
     this.selectedCategoryId = categoryId
+    this.getAllItems()
+  }
+
+  resetFilter(){
+    this.selectedCategoryIdForChildren = null
+    this.selectedCategoryId = null
     this.getAllItems()
   }
 }

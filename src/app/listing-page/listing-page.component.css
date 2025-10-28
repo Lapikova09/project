@@ -36,7 +36,6 @@
 
 .filters{
     width: 315px;
-    width: 315px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -166,6 +165,10 @@
     display: flex;
     justify-content: center;
     gap: 20px;
+}
+
+.pages_cont div{
+    width: 100px;
 }
 
 .child{

@@ -45,8 +45,8 @@ export class LoginComponent {
   ]
 
   loginData ={
-    email: "pvdr260@gmail.com",
-    password_hash: "qwe"
+    username: "pvdr260@gmail.com",
+    password: "qwe"
   }
   
   ngOnInit(){
@@ -65,7 +65,7 @@ export class LoginComponent {
   }
 
   login(){
-    this.apiService.login(this.loginData).subscribe({
+    this.apiService.login(this.loginData.password, this.loginData.username).subscribe({
       next: (response) => {
         console.log('Успешно:', response);
         this.apiService.token = response.access_token

@@ -3,7 +3,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MainService } from '../main.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { BagItem, Category, Item } from '../interfaces';
+import { Bag, BagItem, Category, Item } from '../interfaces';
 
 @Component({
   selector: 'app-bag',
@@ -31,17 +31,11 @@ export class BagComponent {
     }
   ]
 
-  items:BagItem[]=[
-    {
-      id: 0,
-      item_name: 'dscsdcsdcds',
-      item_id: 0,
-      count: 2,
-      images: '',
-      full_price: 2312,
-      rating: 3
-    }
-  ]
+  bag:Bag={
+    items:[],
+    item_count: 0,
+    full_price: 0
+  }
 
   ngOnInit(){
     this.getAllCategories(), 
@@ -61,8 +55,8 @@ export class BagComponent {
   
   getItems(){
     this.apiService.getBagItems(6).subscribe({
-      next: (data: BagItem[]) => {
-        this.items = data;
+      next: (data: Bag) => {
+        this.bag = data;
         console.log('Товары успешно получены')
       },
       error: (err) => {

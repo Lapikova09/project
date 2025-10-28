@@ -15,7 +15,9 @@ export interface User{
     email:string,
     money:number,
     created_at:string,
-    role:string
+    role:string,
+    currency: string,
+    language: string
 }
 
 export interface Category{
@@ -33,4 +35,16 @@ export interface BagItem{
     count: number,
     full_price: number,
     rating: number
+}
+
+export interface Catalog{
+    items:Item[],
+    current_page: number,
+    max_page: number
+}
+
+export interface Bag{
+    items:BagItem[],
+    item_count: number,
+    full_price: number
 }
