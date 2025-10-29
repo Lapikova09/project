@@ -14,11 +14,12 @@ import { Category } from '../interfaces';
 export class LoginComponent {
   
   constructor(private apiService:MainService){
-    
+    this.token = apiService.token
   }
 
   login_shown:boolean = true
   register_shown:boolean = false
+  token:string = ''
 
   reg(){
     this.login_shown = false
@@ -69,6 +70,7 @@ export class LoginComponent {
       next: (response) => {
         console.log('Успешно:', response);
         this.apiService.token = response.access_token
+        this.token = response.access_token
       },
       error: (error) => {
         console.error('Ошибка:', error);

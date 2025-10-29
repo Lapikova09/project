@@ -50,7 +50,7 @@
             <div class="life_style">
                 <div>
                     <p class="life_text">Catalog</p>
-                    <p class="items">{{items_number}} items</p>
+                    <p class="items">{{catalog.max_page}} pages</p>
                 </div>
                 <p class="choose">CHOOSE FILTERS YOU NEED</p>
                 
@@ -64,7 +64,7 @@
                     <div class="type">
                         <div *ngFor="let el of categories">
                             <label>
-                                <input [value]="el.id" name="radioGroupCategory" type="radio" (change)="onCategoryChange(el.id, 'category')">
+                                <input [value]="el.id" name="radioGroupCategory" type="radio" [checked]="selectedCategoryId === el.id" (change)="onCategoryChange(el.id, 'category')">
                                 {{el.name}}
                             </label>
                             <div *ngIf="selectedCategoryIdForChildren == el.id">
@@ -89,14 +89,14 @@
                     </div>
                     <p class="filt">Sorting</p>
                     <ul class="sort">
-                        <div class="sort_but" (click)="sort('rating_desc')">Sort by rating</div>
-                        <div class="sort_but" (click)="sort('date_desc')">Sort by date</div>
-                        <div class="sort_but" (click)="sort('by_preference')">Sort by preference</div>
+                        <div class="sort_but" [ngClass]="{'clicked': sort_type == 'rating_desc'}" (click)="sort('rating_desc')">Sort by rating</div>
+                        <div class="sort_but" [ngClass]="{'clicked': sort_type == 'date_desc'}" (click)="sort('date_desc')">Sort by date</div>
+                        <div class="sort_but" [ngClass]="{'clicked': sort_type == 'by_preference'}" (click)="sort('by_preference')">Sort by preference</div>
                     </ul>
                     <p class="refine">SORT BY PRICE</p>
                     <ul class="price_cont">
-                        <div class="sort_but" (click)="sort('price_asc')">From the <br> cheapest</div>
-                        <div class="sort_but" (click)="sort('price_desc')">From the most expensive</div>
+                        <div class="sort_but" [ngClass]="{'clicked': sort_type == 'price_asc'}" (click)="sort('price_asc')">From the <br> cheapest</div>
+                        <div class="sort_but" [ngClass]="{'clicked': sort_type == 'price_desc'}" (click)="sort('price_desc')">From the most expensive</div>
                     </ul>
                 </div>
                 <div >

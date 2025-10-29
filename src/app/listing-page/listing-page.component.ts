@@ -36,7 +36,6 @@ export class ListingPageComponent {
     }
   ]
 
-  items_number:number = this.catalog.items.length
   min_price:number|null = null
   max_price:number|null = null
   sort_type:string =''
@@ -53,7 +52,6 @@ export class ListingPageComponent {
     this.apiService.getItems(this.min_price, this.max_price, this.sort_type, this.page, this.selectedCategoryId).subscribe({
       next: (data: Catalog) => {
         this.catalog = data;
-        this.items_number = this.catalog.items.length
       },
       error: (err) => {
         console.error("Ошибка при получении данных:", err);

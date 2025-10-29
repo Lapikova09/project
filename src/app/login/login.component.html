@@ -45,10 +45,12 @@
         </div>
     </div>
 
+    <div *ngIf="token" class="container">
+        Your profile
+        <div>logout</div>
+    </div>
 
-
-
-    <div class="container">
+    <div *ngIf="token ==''" class="container">
         <div class="buttons">
             <div (click)="log()" class='log_but' >LOG IN</div>
             <div (click)="reg()" class='log_but' >REGISTER</div>
@@ -81,6 +83,7 @@
                 <p class="bl_text">Login Details</p>
                 <input class="name" type="text" placeholder="Email">
                 <input class="name" type="text" placeholder="Password">
+                <input class="name" type="text" placeholder="Confirm password">
                 <p class="little_text">Minimum 8 characters with at least one uppercase, one lowercase, one special character and a number</p>
                 <button><img src="/register.png" alt=""></button>
             </div>
