@@ -3,7 +3,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MainService } from '../main.service';
-import { Category } from '../interfaces';
+import { Category, User } from '../interfaces';
 
 @Component({
   selector: 'app-login',
@@ -45,6 +45,17 @@ export class LoginComponent {
     }
   ]
 
+  user:User ={
+    id:0,
+    name:'string',
+    email:'string',
+    money:0,
+    created_at:'string',
+    role:'string',
+    currency: 'string',
+    language: 'string'
+  }
+
   loginData ={
     username: "pvdr260@gmail.com",
     password: "qwe"
@@ -71,10 +82,39 @@ export class LoginComponent {
         console.log('Успешно:', response);
         this.apiService.token = response.access_token
         this.token = response.access_token
+        this.getUser()
       },
       error: (error) => {
         console.error('Ошибка:', error);
       }
     });
   }
+
+  logout(){
+     this.apiService.logout().subscribe({
+      next: (response) => {
+        console.log('Успешно:', response);
+        this.apiService.token = ''
+        this.token = ''
+        
+      },
+      error: (error) => {
+        console.error('Ошибка:', error);
+      }
+    });
+  }
+
+  getUser(){
+     this.apiService.getUser().subscribe({
+      next: (response) => {
+        console.log('Успешно:', response);
+        this.user = response
+      },
+      error: (error) => {
+        console.error('Ошибка:', error);
+      }
+    });
+  }
+
+
 }

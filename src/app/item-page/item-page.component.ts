@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MainService } from '../main.service';
-import { Item } from '../interfaces';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Category } from '../interfaces';
+import { Category, Item, ItemComment } from '../interfaces';
 
 @Component({
   selector: 'app-item-page',
@@ -37,19 +36,27 @@ export class ItemPageComponent {
       id:1,
       children:[],
       parent_id: 0
-    },  {
-      name:"wddasds",
-      id:1,
-      children:[],
-      parent_id: 0
     }
+  ]
+
+  comments:ItemComment[]=[
+    { 
+      id: 0,
+      username: 'string',
+      media: [],
+      message: 'string',
+      rating: 0,
+      created_at: 'string',
+      updated_at: 'string'
+    },
   ]
 
   count:number = 1
 
   ngOnInit(){
     this.getItem(),
-    this.getAllCategories()
+    this.getAllCategories(),
+    this.getComments()
   }
 
   getItem(){
@@ -80,6 +87,17 @@ export class ItemPageComponent {
     this.apiService.postItemIntoBag(this.activeId, this.count).subscribe({
       next: (response: any) => {
         console.log("Товар добавлен в корзину:", response);
+      },
+      error: (err) => {
+        console.error("Ошибка при получении данных:", err);
+      }
+    });
+  }
+
+  getComments(){
+    this.apiService.getComments(this.activeId, '').subscribe({
+      next: (data) => {
+        this.comments = data;
       },
       error: (err) => {
         console.error("Ошибка при получении данных:", err);

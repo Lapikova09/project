@@ -191,3 +191,40 @@
 .show{
     display: block;
 }
+
+.logout_but{
+    background-color: #232321;
+    color: white;
+    padding: 5px;
+    margin: 3px;
+    width: 155px;
+    border-radius: 7px;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.profile{
+    margin-right: auto;
+    margin-left: auto;
+    width: 400px;
+    background-color:  #e3e3d4;
+    border-radius: 20px;
+    margin-top: 30px;
+    padding: 20px;
+}
+
+.profile_text{
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 28px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.user_info{
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    margin-bottom: 24px;
+}

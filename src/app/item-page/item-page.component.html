@@ -76,13 +76,15 @@
                 <img src="{{item.img_url}}" alt="">
             </div>
         </div>
-            <div class="may_like">
-                <p>You may also like</p>
+        <div class="comments">
+            <p>Comments: </p>
+            <div *ngFor="let el of comments">
+                <div>
+                    {{el.message}}
+                </div>
             </div>
-            <ul class="train_list">
-                
-            </ul>
         </div>
+    </div>
 
         <div class="container">
             <div class="foot_cont">

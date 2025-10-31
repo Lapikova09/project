@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Category, Item, BagItem, Catalog, Bag } from './interfaces';
+import { Category, Item, BagItem, Catalog, Bag, User, ItemComment } from './interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,9 @@ export class MainService {
 
   // Комментарии(изначально видно не все), а также их добавление, звездочки(нет)
   // Страницы для админа
-  // Страница с данными и выходом из профиля
+
+
+  //Получение данных пользователя, страница с его данными и логаут
   
 
   getItems(min_price:number|null, max_price:number|null, sort_type:string, page:number, categoryID:number|null): Observable<Catalog> {
@@ -115,4 +117,30 @@ export class MainService {
 
     return this.http.post(`${this.apiUrl}/login`, body.toString(), { headers });
   }
+
+  logout(){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`
+    });
+
+    return this.http.post(`${this.apiUrl}/logout`, {}, { headers });
+  }
+
+  getUser(){
+     const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`
+    });
+
+    return this.http.get<User>(`${this.apiUrl}/users/me`, {headers});
+  }
+
+  getComments(item_id:number, sort_type:string){
+    let params = new HttpParams();
+    
+    if(sort_type) params=params.set('sort_type', sort_type)
+
+    return this.http.get<ItemComment[]>(`${this.apiUrl}/comments/${item_id}`, {params});
+  }
+
+
 }

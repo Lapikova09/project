@@ -48,3 +48,18 @@ export interface Bag{
     item_count: number,
     full_price: number
 }
+
+export interface ItemComment{
+    id: number,
+    username: string,
+    media: Media[],
+    message: string,
+    rating: number,
+    created_at: string,
+    updated_at: string
+}
+
+export interface Media{
+    url:string,
+    type: string
+}
