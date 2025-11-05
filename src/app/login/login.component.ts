@@ -3,7 +3,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MainService } from '../main.service';
-import { Category, User } from '../interfaces';
+import { Category, RegisterInfo, User } from '../interfaces';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +20,12 @@ export class LoginComponent {
   login_shown:boolean = true
   register_shown:boolean = false
   token:string = ''
+  login_email:string|null = null
+  login_password:string|null = null
+  register_name:string|null = null
+  register_email:string|null = null
+  register_password:string|null = null
+  register_password_confirm:string|null = null
 
   reg(){
     this.login_shown = false
@@ -116,5 +122,21 @@ export class LoginComponent {
     });
   }
 
-
+  register(){
+    let register_info:RegisterInfo ={
+      email: `${this.register_email}`,
+      password: `${this.register_password}`,
+      password_again: `${this.register_password_confirm}`,
+      name: `${this.register_name}`
+    }
+     console.log('Успешно:', register_info);
+    this.apiService.register(register_info).subscribe({
+      next: (response) => {
+        console.log('Успешно:', response);
+      },
+      error: (error) => {
+        console.error('Ошибка:', error);
+      }
+    });
+  }
 }

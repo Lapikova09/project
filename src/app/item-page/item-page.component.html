@@ -76,11 +76,16 @@
                 <img src="{{item.img_url}}" alt="">
             </div>
         </div>
-        <div class="comments">
+        <div class="comment_cont">
             <p>Comments: </p>
-            <div *ngFor="let el of comments">
-                <div>
-                    {{el.message}}
+            <div *ngIf="commentsToShow <= 3" (click)="showAllComments()">Show all</div>
+        </div>
+        <div class="comments">
+            <div *ngFor="let el of comments| slice:0:commentsToShow">
+                <div class="comment">
+                    <p>Username: {{el.username}}</p>
+                    <p>Message: {{el.message}}</p>
+                    <p>Rating: {{el.rating}}</p>
                 </div>
             </div>
         </div>

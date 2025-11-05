@@ -63,3 +63,10 @@ export interface Media{
     url:string,
     type: string
 }
+
+export interface RegisterInfo{
+    email: string,
+    password: string,
+    password_again: string,
+    name: string
+}

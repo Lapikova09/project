@@ -66,8 +66,8 @@
             <div class="log" *ngIf="login_shown">
                 <h6>Login</h6>
                 <p class="forgot">Forgot your password?</p>
-                <input class="email" type="text" placeholder="Email">
-                <input class="password" type="text" placeholder="Password">
+                <input [(ngModel)]="login_email" class="email" type="text" placeholder="Email">
+                <input [(ngModel)]="login_password" class="password" type="text" placeholder="Password">
                 <div (click)="login()"><img src="/Button000.png" alt=""></div>
                 <div class="social">
                     <button><img src="/fr1.png" alt=""></button>
@@ -86,13 +86,13 @@
                 </div>
                 <p class="or">OR</p>
                 <p class="bl_text">Your Name</p>
-                <input class="name" type="text" placeholder="First Name">
+                <input [(ngModel)]="register_name" class="name" type="text" placeholder="First Name">
                 <p class="bl_text">Login Details</p>
-                <input class="name" type="text" placeholder="Email">
-                <input class="name" type="text" placeholder="Password">
-                <input class="name" type="text" placeholder="Confirm password">
+                <input [(ngModel)]="register_email" class="name" type="text" placeholder="Email">
+                <input [(ngModel)]="register_password" class="name" type="text" placeholder="Password">
+                <input [(ngModel)]="register_password_confirm" class="name" type="text" placeholder="Confirm password">
                 <p class="little_text">Minimum 8 characters with at least one uppercase, one lowercase, one special character and a number</p>
-                <button><img src="/register.png" alt=""></button>
+                <div (click)="register()"><img src="/register.png" alt="">Register</div>
             </div>
             <div class="join">
                 <h2>Join  Kicks Club Get Rewarded <br> Today.</h2>

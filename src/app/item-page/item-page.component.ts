@@ -18,6 +18,7 @@ export class ItemPageComponent {
   }
 
   activeId:number = 0
+  commentsToShow:number = 3
 
   item:Item = {
     id: 0,
@@ -103,5 +104,9 @@ export class ItemPageComponent {
         console.error("Ошибка при получении данных:", err);
       }
     });
+  }
+
+  showAllComments(){
+    this.commentsToShow = this.comments.length
   }
 }

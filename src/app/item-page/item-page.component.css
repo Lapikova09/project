@@ -150,14 +150,32 @@
     font-weight: 600;
 }
 
+.comment_cont{
+    display: flex;
+    justify-content: space-between;
+    font-size: 26px;
+    font-weight: 600;
+    margin: 20px;
+}
+
 .comments{
     display: flex;
     justify-content: space-between;
     margin-bottom: 32px;
+    gap: 30px;
+    flex-wrap: wrap;
 }
 
-.comments p{
-    font-size: 30px;
+.comment{
+    width: 307px;
+    font-size: 20px;
+    padding: 10px;
     font-weight: 600;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.comment p {
+    margin-top: 10px;
 }
 
