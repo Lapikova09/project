@@ -15,9 +15,7 @@ export class MainService {
   token:string = ''
 
   // фотки и слайдеры
-  //верификация
 
-  //Комментарии(изначально видно не все) и регистрация 
   // добавление комментов, звездочки(нет)
   // Страницы для админа
   
@@ -142,6 +140,14 @@ export class MainService {
 
   register(register_info:RegisterInfo){
     return this.http.post(`${this.apiUrl}/register/request`, register_info, {});
+  }
+
+  confirmRegister(email:string, code:string){
+    const params = new HttpParams()
+      .set('email', email)
+      .set('code', code);
+
+    return this.http.post(`${this.apiUrl}/register/confirm`, {}, {params});
   }
 
 

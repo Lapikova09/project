@@ -68,7 +68,7 @@
                 <p class="forgot">Forgot your password?</p>
                 <input [(ngModel)]="login_email" class="email" type="text" placeholder="Email">
                 <input [(ngModel)]="login_password" class="password" type="text" placeholder="Password">
-                <div (click)="login()"><img src="/Button000.png" alt=""></div>
+                <div class="login" (click)="login()">Login</div>
                 <div class="social">
                     <button><img src="/fr1.png" alt=""></button>
                     <button><img src="/fr2.png" alt=""></button>
@@ -92,7 +92,13 @@
                 <input [(ngModel)]="register_password" class="name" type="text" placeholder="Password">
                 <input [(ngModel)]="register_password_confirm" class="name" type="text" placeholder="Confirm password">
                 <p class="little_text">Minimum 8 characters with at least one uppercase, one lowercase, one special character and a number</p>
-                <div (click)="register()"><img src="/register.png" alt="">Register</div>
+                <div class="login" (click)="register()">Register</div>
+            </div>
+            <div class="register" *ngIf="code_page_shown">
+                <h6>Confirm</h6>
+                <p class="bl_text">A code was sent to your email</p>
+                <input [(ngModel)]="code" class="name" type="number" placeholder="Enter code">
+                <div class="login" (click)="confirm()">Check your code</div>
             </div>
             <div class="join">
                 <h2>Join  Kicks Club Get Rewarded <br> Today.</h2>
