@@ -78,6 +78,7 @@ export class LoginComponent {
   
   ngOnInit(){
     this.getAllCategories()
+    if(this.token) this.getUser()
   }
     
   getAllCategories(){

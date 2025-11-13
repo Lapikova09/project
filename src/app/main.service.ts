@@ -14,9 +14,9 @@ export class MainService {
 
   token:string = ''
 
-  // фотки и слайдеры
+  // фотки и слайдеры(товаров, комментариев)
 
-  // добавление комментов, звездочки(нет)
+  // звездочки(нет)
   // Страницы для админа
   
 
@@ -150,5 +150,14 @@ export class MainService {
     return this.http.post(`${this.apiUrl}/register/confirm`, {}, {params});
   }
 
+  postComment(itemId:number, message:string, rating:number){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`,
+    });
+    const formData = new FormData();
+    formData.append('message', message);
+    formData.append('rating', `${rating}`); 
 
+  return this.http.post(`${this.apiUrl}/comments/${itemId}`, formData, {headers});
+  }
 }

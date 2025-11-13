@@ -78,7 +78,16 @@
         </div>
         <div class="comment_cont">
             <p>Comments: </p>
+            <div (click)="showFormForNewComment()">Add your comment</div>
             <div *ngIf="commentsToShow <= 3" (click)="showAllComments()">Show all</div>
+        </div>
+        <div *ngIf="newComment" class="new_comment">
+            <p class="product">Add comment info</p>
+            <p>Rating</p>
+            <input [(ngModel)]="ratingForComment" class="comment_info" type="number" placeholder="Rating">
+            <p>Message</p>
+            <input [(ngModel)]="messageForComment" class="comment_info" type="text" placeholder="Message">
+            <div class="comment_but" (click)="addComment()">Add comment</div>
         </div>
         <div class="comments">
             <div *ngFor="let el of comments| slice:0:commentsToShow">

@@ -19,6 +19,9 @@ export class ItemPageComponent {
 
   activeId:number = 0
   commentsToShow:number = 3
+  newComment:boolean = false
+  messageForComment:string = ''
+  ratingForComment:number = 0
 
   item:Item = {
     id: 0,
@@ -108,5 +111,22 @@ export class ItemPageComponent {
 
   showAllComments(){
     this.commentsToShow = this.comments.length
+  }
+
+  showFormForNewComment(){
+    this.newComment = true
+  }
+
+  addComment(){
+    this.apiService.postComment(this.activeId, this.messageForComment, this.ratingForComment).subscribe({
+      next: (response) => {
+        console.log("Комментарий добавлен:", response);
+        this.newComment = false
+        this.getComments()
+      },
+      error: (err) => {
+        console.error("Ошибка при получении данных:", err);
+      }
+    });
   }
 }
