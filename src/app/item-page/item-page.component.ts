@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MainService } from '../main.service';
 import { FormsModule } from '@angular/forms';
@@ -17,11 +17,32 @@ export class ItemPageComponent {
     this.activeId = this.apiService.activeItemId
   }
 
+  percentage: number = 0;
+  overlayStyle: { [key: string]: string } = {};
+
+  height: string = '60px';
+  updateOverlayStyle(): void {
+     console.log(this.item.rating)
+    let validPercentage = 100 - this.item.rating*100/5
+    this.overlayStyle = {
+      'width': `${validPercentage}%`,
+      'background-color': '#E7E7E3',
+      'height': '100%',
+      'position': 'absolute',
+      'top': '0',
+      'right': '0',
+      'z-index': '2',
+      'transition': 'width 0.3s ease-in-out'
+    };
+    console.log(validPercentage)
+  }
+
   activeId:number = 0
   commentsToShow:number = 3
   newComment:boolean = false
   messageForComment:string = ''
   ratingForComment:number = 0
+  textForCommentButton:string = 'Show all'
 
   item:Item = {
     id: 0,
@@ -68,6 +89,7 @@ export class ItemPageComponent {
       next: (data: Item) => {
         this.item = data;
         console.log("Получил");
+        this.updateOverlayStyle()
       },
       error: (err) => {
         console.log(this.activeId)
@@ -110,7 +132,13 @@ export class ItemPageComponent {
   }
 
   showAllComments(){
-    this.commentsToShow = this.comments.length
+    if(this.textForCommentButton == 'Show all'){
+      this.commentsToShow = this.comments.length
+      this.textForCommentButton = 'Hide all'
+    }else{
+      this.commentsToShow = 3
+      this.textForCommentButton = 'Show all'
+    }
   }
 
   showFormForNewComment(){
@@ -123,6 +151,10 @@ export class ItemPageComponent {
         console.log("Комментарий добавлен:", response);
         this.newComment = false
         this.getComments()
+        this.commentsToShow = 3
+        this.textForCommentButton = 'Show all'
+        console.log(this.comments)
+        console.log(this.activeId)
       },
       error: (err) => {
         console.error("Ошибка при получении данных:", err);

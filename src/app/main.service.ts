@@ -16,8 +16,9 @@ export class MainService {
 
   // фотки и слайдеры(товаров, комментариев)
 
-  // звездочки(нет)
+  //изменение валюты и языка пользователя
   // Страницы для админа
+  
   
 
   getItems(min_price:number|null, max_price:number|null, sort_type:string, page:number, categoryID:number|null): Observable<Catalog> {

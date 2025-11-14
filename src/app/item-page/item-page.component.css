@@ -59,6 +59,7 @@
     font-size: 20px;
     font-weight: 600;
     margin-top: 30px;
+    align-items:center;
 }
 
 .size_chart{
@@ -205,3 +206,21 @@
     width: 436px;
 }
 
+.show_comments{
+    width: 100px;
+}
+
+.progress-bar-image-container {
+  width: 100%; 
+  position: relative;
+  overflow: hidden; 
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+}
+
+.progress-background-image {
+    display: block;
+    width: 150px;
+    object-fit: cover; 
+}

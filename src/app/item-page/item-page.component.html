@@ -53,13 +53,12 @@
                 <p class="blue_text">{{item.price}}$</p>
                 <div class="size_cont">
                     <p>Rating: {{item.rating}}</p>
-                    <div class="stars_cont">
-                        <img *ngIf="item.rating > 0" class="size_chart" src="/star.png" alt="">
-                        <img *ngIf="item.rating > 1" class="size_chart" src="/star.png" alt="">
-                        <img *ngIf="item.rating > 2" class="size_chart" src="/star.png" alt="">
-                        <img *ngIf="item.rating > 3" class="size_chart" src="/star.png" alt="">
-                        <img *ngIf="item.rating > 4" class="size_chart" src="/star.png" alt="">
-                    </div> 
+                    <div>
+                        <div class="progress-bar-image-container" [style.height]="height">
+                            <img src="stars.png" alt="Progress background" class="progress-background-image">
+                            <div class="progress-overlay" [ngStyle]="overlayStyle"></div>
+                        </div> 
+                    </div>                   
                 </div>
                 <div class="cart_cont">
                     <button class='add_to_cart1'><img src="/style_layer (2).png" alt=""></button>
@@ -79,7 +78,9 @@
         <div class="comment_cont">
             <p>Comments: </p>
             <div (click)="showFormForNewComment()">Add your comment</div>
-            <div *ngIf="commentsToShow <= 3" (click)="showAllComments()">Show all</div>
+            <div class="show_comments">
+                <div *ngIf="newComment == false" (click)="showAllComments()">{{textForCommentButton}}</div>
+            </div>
         </div>
         <div *ngIf="newComment" class="new_comment">
             <p class="product">Add comment info</p>
@@ -89,7 +90,7 @@
             <input [(ngModel)]="messageForComment" class="comment_info" type="text" placeholder="Message">
             <div class="comment_but" (click)="addComment()">Add comment</div>
         </div>
-        <div class="comments">
+        <div *ngIf="newComment == false" class="comments">
             <div *ngFor="let el of comments| slice:0:commentsToShow">
                 <div class="comment">
                     <p>Username: {{el.username}}</p>

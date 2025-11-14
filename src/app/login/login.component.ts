@@ -28,16 +28,6 @@ export class LoginComponent {
   register_password:string|null = null
   register_password_confirm:string|null = null
   code:number = 0
-
-  reg(){
-    this.login_shown = false
-    this.register_shown = true
-  }
-
-  log(){
-    this.login_shown = true
-    this.register_shown = false
-  }
  
   categories:Category[]=[
     {
@@ -64,11 +54,6 @@ export class LoginComponent {
     language: 'string'
   }
 
-  loginData ={
-    username: "pvdr260@gmail.com",
-    password: "qwe"
-  }
-
   register_info:RegisterInfo ={
       email: ``,
       password: ``,
@@ -79,6 +64,18 @@ export class LoginComponent {
   ngOnInit(){
     this.getAllCategories()
     if(this.token) this.getUser()
+  }
+
+  reg(){
+    this.login_shown = false
+    this.register_shown = true
+    this.code_page_shown = false
+  }
+
+  log(){
+    this.login_shown = true
+    this.register_shown = false
+    this.code_page_shown = false
   }
     
   getAllCategories(){
@@ -93,7 +90,11 @@ export class LoginComponent {
   }
 
   login(){
-    this.apiService.login(this.loginData.password, this.loginData.username).subscribe({
+    let login_info ={
+      password: `${this.login_password}`,
+      name: `${this.login_email}`
+    }
+    this.apiService.login(login_info.password, login_info.name).subscribe({
       next: (response) => {
         console.log('Успешно:', response);
         this.apiService.token = response.access_token
