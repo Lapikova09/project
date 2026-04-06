@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MainService } from '../main.service';
 import { Catalog, Category, Item } from '../interfaces';
@@ -38,10 +38,11 @@ export class ListingPageComponent {
 
   min_price:number|null = null
   max_price:number|null = null
-  sort_type:string =''
+  sort_type:string = 'rating_desc'
   page:number = 1
   selectedCategoryId:number|null = null
   selectedCategoryIdForChildren:number|null = null
+  search_q:string|null = null
 
   ngOnInit(){
     this.getAllItems(),
@@ -49,7 +50,7 @@ export class ListingPageComponent {
   }
 
   getAllItems(){
-    this.apiService.getItems(this.min_price, this.max_price, this.sort_type, this.page, this.selectedCategoryId).subscribe({
+    this.apiService.getItems(this.min_price, this.max_price, this.sort_type, this.page, this.selectedCategoryId, this.search_q).subscribe({
       next: (data: Catalog) => {
         this.catalog = data;
       },

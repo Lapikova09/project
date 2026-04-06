@@ -4,6 +4,7 @@ import { ListingPageComponent } from './listing-page/listing-page.component';
 import { LoginComponent } from './login/login.component';
 import { BagComponent } from './bag/bag.component';
 import { ItemPageComponent } from './item-page/item-page.component';
+import { AdministratorPageComponent } from './administrator-page/administrator-page.component';
 
 export const routes: Routes = [
     { path: '', component: MainPageComponent }, 
@@ -11,4 +12,5 @@ export const routes: Routes = [
     { path: 'login', component: LoginComponent }, 
     { path: 'bag', component: BagComponent }, 
     { path: 'itemPage', component: ItemPageComponent }, 
+    { path: 'administrator', component: AdministratorPageComponent }, 
 ];

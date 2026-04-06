@@ -90,12 +90,29 @@
             <input [(ngModel)]="messageForComment" class="comment_info" type="text" placeholder="Message">
             <div class="comment_but" (click)="addComment()">Add comment</div>
         </div>
+        <div *ngIf="commentsToShow > 3" class="sorting_cont">
+            <div class="sort_but" [ngClass]="{'clicked': sort_type == 'date_desc'}" (click)="sort('date_desc')">Sort by date</div>
+            <div class="sort_but" [ngClass]="{'clicked': sort_type == 'rating_desc'}" (click)="sort('rating_desc')">Sort by rating</div>
+        </div>
         <div *ngIf="newComment == false" class="comments">
-            <div *ngFor="let el of comments| slice:0:commentsToShow">
+            <div *ngFor="let el of commentsCatalog.comments| slice:0:commentsToShow">
                 <div class="comment">
                     <p>Username: {{el.username}}</p>
                     <p>Message: {{el.message}}</p>
                     <p>Rating: {{el.rating}}</p>
+                    <p>Date: {{el.updated_at | slice:0:10}}</p>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="commentsToShow > 3" class="pages_cont">
+            <div>
+                <div *ngIf="commentsCatalog.current_page > 1" (click)="getPreviousPage()">
+                    <img width="70px" src="Frame 2 (1).png" alt="">
+                </div>
+            </div>
+            <div>
+                <div *ngIf="commentsCatalog.current_page < commentsCatalog.max_page" (click)="getNextPage()">
+                    <img width="70px" src="/Frame 2 (2).png" alt="">
                 </div>
             </div>
         </div>

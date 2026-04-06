@@ -76,4 +76,16 @@ export class BagComponent {
       }
     });
   }
+
+  postItems(){
+    this.apiService.postOrder().subscribe({
+      next: (response: any) => {
+        console.log('Товар заказан', response)
+        this.getItems()
+      },
+      error: (err) => {
+        console.error("Ошибка при получении данных:", err);
+      }
+    });
+  }
 }

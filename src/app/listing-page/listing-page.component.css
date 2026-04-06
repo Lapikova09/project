@@ -88,7 +88,7 @@
 
 .choose{
     font-family: Rubik;
-    font-size: 50px;
+    font-size: 40px;
     font-weight: 450;
 }
 
@@ -178,4 +178,11 @@
 
 .clicked{
     background-color: #4a69e2;
+}
+
+.search{
+    width: 350px;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
 }

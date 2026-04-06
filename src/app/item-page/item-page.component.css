@@ -207,7 +207,7 @@
 }
 
 .show_comments{
-    width: 100px;
+    width: 150px;
 }
 
 .progress-bar-image-container {
@@ -223,4 +223,33 @@
     display: block;
     width: 150px;
     object-fit: cover; 
+}
+
+.sort_but{
+    background-color: #232321;
+    color: white;
+    padding: 5px;
+    margin: 3px;
+    width: 155px;
+    border-radius: 7px;
+    text-align: center;
+}
+
+.clicked{
+    background-color: #4a69e2;
+}
+
+.sorting_cont{
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.pages_cont{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.pages_cont div{
+    width: 100px;
 }

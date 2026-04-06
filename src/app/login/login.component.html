@@ -18,6 +18,13 @@
                 <img class="click_shop" width="170px" src="/click_shop_logo.png" alt="index.html">
             </a>
             <ul class="head_ul">
+                <li *ngIf="user.role == 'Admin'"><a
+                    routerLink="/administrator"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                    ><img width="30px" src="/administrator.png" alt="">
+                  </a>
+                </li>
                 <li><a
                     routerLink="/listingPage"
                     routerLinkActive="active"

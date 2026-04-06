@@ -18,6 +18,13 @@
                 <img class="click_shop" width="170px" src="/click_shop_logo.png" alt="index.html">
             </a>
             <ul class="head_ul">
+                <li *ngIf="user.role == 'Admin'"><a
+                    routerLink="/administrator"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                    ><img width="30px" src="/administrator.png" alt="">
+                  </a>
+                </li>
                 <li><a
                     routerLink="/listingPage"
                     routerLinkActive="active"
@@ -45,43 +52,7 @@
         </div>
     </div>
 
-    <div class="container">
-        <div class="bag_cont">
-            <div class="your_bag">
-                <p class="your_bag_text">Your Bag</p>
-                <p class="items">Items in your bag not reserved- check out now to make them yours.</p>
-                <div *ngIf="bag.items.length != 0" class="cart_list">
-                    <div class="card" *ngFor="let el of bag.items" >
-                        <img src="" alt="">
-                        <div class="card_text">
-                            <div class="prize">
-                                <p>{{el.item_name}}</p>
-                                <p class="purp">{{el.full_price}} $</p>
-                            </div>
-                            <p class="grey">Men’s Road Running Shoes</p>
-                            <p class="grey">Enamel Blue/ University White</p>
-                            <div class="size_quan">
-                                <p class="grey">Count: {{el.count}}</p>
-                                <div (click)="deleteItem(el.item_id)" class='deleteCard'><img src="/Bin.png" alt=""></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="summary">
-                <p class="your_bag_text">Order Summary</p>
-                <div class="item">
-                    <p>Summery</p>
-                    <p class="summary_">{{bag.full_price}}$</p>
-                </div>
-                <div class="item">
-                    <p>Count</p>
-                    <p class="quantity">{{bag.item_count}}</p>
-                </div>
-                <div (click)="postItems()"><img src="/checkout.png" alt=""></div>
-            </div>
-        </div>
-    </div>
+    
 
     <div class="container">
         <div class="foot_cont">

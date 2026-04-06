@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Category, Item, BagItem, Catalog, Bag, User, ItemComment, RegisterInfo } from './interfaces';
+import { Category, Item, BagItem, Catalog, Bag, User, RegisterInfo, CommentsCatalog } from './interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -16,12 +16,11 @@ export class MainService {
 
   // фотки и слайдеры(товаров, комментариев)
 
-  //изменение валюты и языка пользователя
+  // изменение валюты и языка пользователя(новый токен, символ валюты)
   // Страницы для админа
-  
-  
 
-  getItems(min_price:number|null, max_price:number|null, sort_type:string, page:number, categoryID:number|null): Observable<Catalog> {
+
+  getItems(min_price:number|null, max_price:number|null, sort_type:string, page:number, categoryID:number|null, search_q:string|null): Observable<Catalog> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.token}`,
     });
@@ -39,6 +38,10 @@ export class MainService {
 
     if (categoryID !== null) {
       params = params.set('category', categoryID.toString());
+    }
+
+    if(search_q !== null){
+       params = params.set('search_q', search_q.toString());
     }
 
     const options = {
@@ -124,19 +127,26 @@ export class MainService {
   }
 
   getUser(){
-     const headers = new HttpHeaders({
+    const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.token}`
     });
 
     return this.http.get<User>(`${this.apiUrl}/users/me`, {headers});
   }
 
-  getComments(item_id:number, sort_type:string){
-    let params = new HttpParams();
-    
-    if(sort_type) params=params.set('sort_type', sort_type)
+  getComments(item_id:number, sort_type:string, page:number){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`
+    });
+    let param = new HttpParams();
+    if(sort_type) param=param.set('sort_type', sort_type)
+    param=param.set('page', page)
+    const options = {
+      headers: headers,
+      params: param
+    };
 
-    return this.http.get<ItemComment[]>(`${this.apiUrl}/comments/${item_id}`, {params});
+    return this.http.get<CommentsCatalog>(`${this.apiUrl}/comments/${item_id}`, options);
   }
 
   register(register_info:RegisterInfo){
@@ -159,6 +169,14 @@ export class MainService {
     formData.append('message', message);
     formData.append('rating', `${rating}`); 
 
-  return this.http.post(`${this.apiUrl}/comments/${itemId}`, formData, {headers});
+    return this.http.post(`${this.apiUrl}/comments/${itemId}`, formData, {headers});
+  }
+
+  postOrder(){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`,
+    });
+
+    return this.http.post(`${this.apiUrl}/order/create`, {}, {headers});
   }
 }

@@ -3,7 +3,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MainService } from '../main.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Category, Item, ItemComment } from '../interfaces';
+import { Category, CommentsCatalog, Item } from '../interfaces';
 
 @Component({
   selector: 'app-item-page',
@@ -22,7 +22,6 @@ export class ItemPageComponent {
 
   height: string = '60px';
   updateOverlayStyle(): void {
-     console.log(this.item.rating)
     let validPercentage = 100 - this.item.rating*100/5
     this.overlayStyle = {
       'width': `${validPercentage}%`,
@@ -34,15 +33,17 @@ export class ItemPageComponent {
       'z-index': '2',
       'transition': 'width 0.3s ease-in-out'
     };
-    console.log(validPercentage)
   }
 
   activeId:number = 0
+  count:number = 1
   commentsToShow:number = 3
   newComment:boolean = false
   messageForComment:string = ''
   ratingForComment:number = 0
   textForCommentButton:string = 'Show all'
+  sort_type:string = 'date_desc'
+  page:number = 1
 
   item:Item = {
     id: 0,
@@ -64,19 +65,12 @@ export class ItemPageComponent {
     }
   ]
 
-  comments:ItemComment[]=[
-    { 
-      id: 0,
-      username: 'string',
-      media: [],
-      message: 'string',
-      rating: 0,
-      created_at: 'string',
-      updated_at: 'string'
-    },
-  ]
-
-  count:number = 1
+  commentsCatalog:CommentsCatalog={
+    all_comments_count: 0,
+    current_page: 0,
+    max_page: 0, 
+    comments: []
+  }
 
   ngOnInit(){
     this.getItem(),
@@ -121,9 +115,9 @@ export class ItemPageComponent {
   }
 
   getComments(){
-    this.apiService.getComments(this.activeId, '').subscribe({
+    this.apiService.getComments(this.activeId, this.sort_type, this.page).subscribe({
       next: (data) => {
-        this.comments = data;
+        this.commentsCatalog = data;
       },
       error: (err) => {
         console.error("Ошибка при получении данных:", err);
@@ -133,7 +127,7 @@ export class ItemPageComponent {
 
   showAllComments(){
     if(this.textForCommentButton == 'Show all'){
-      this.commentsToShow = this.comments.length
+      this.commentsToShow = this.commentsCatalog.comments.length
       this.textForCommentButton = 'Hide all'
     }else{
       this.commentsToShow = 3
@@ -153,12 +147,25 @@ export class ItemPageComponent {
         this.getComments()
         this.commentsToShow = 3
         this.textForCommentButton = 'Show all'
-        console.log(this.comments)
-        console.log(this.activeId)
       },
       error: (err) => {
         console.error("Ошибка при получении данных:", err);
       }
     });
+  }
+
+  sort(type:string){
+    this.sort_type = type
+    this.getComments()
+  }
+
+  getNextPage(){
+    this.page++;
+    this.getComments()
+  }
+
+  getPreviousPage(){
+    this.page--;
+    this.getComments()
   }
 }

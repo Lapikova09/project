@@ -59,6 +59,13 @@ export interface ItemComment{
     updated_at: string
 }
 
+export interface CommentsCatalog{
+    comments: ItemComment[],
+    all_comments_count:number,
+    current_page:number,
+    max_page:number
+}
+
 export interface Media{
     url:string,
     type: string

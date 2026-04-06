@@ -53,7 +53,7 @@
                     <p class="items">{{catalog.max_page}} pages</p>
                 </div>
                 <p class="choose">CHOOSE FILTERS YOU NEED</p>
-                
+                <input class="search" type="text"  [(ngModel)]="search_q"  placeholder="Search..." (input)="getAllItems()">
             </div>
             <div class="catalog_cont">
                 <div class="filters">
@@ -102,7 +102,7 @@
                 <div >
                     <div class="catalog" *ngIf="catalog.items.length != 0">
                         <div class="card" *ngFor="let el of catalog.items" >
-                            <img class="item_img" src="{{el.img_url}}" alt="">
+                            <img class="item_img" src="{{el.img_url}}" alt="#">
                             <p>{{el.name}}</p>
                             <p>Rating: {{el.rating}}</p>
                             <a
@@ -110,7 +110,9 @@
                                 routerLinkActive="active"
                                 [routerLinkActiveOptions]="{ exact: true }"
                             >
-                                <div (click)="getId(el.id)" class="but_cont"><img src="/Button (2).png" class="but_cont" alt=""><span class="price">{{el.price}}$</span></div>
+                                <div (click)="getId(el.id)" class="but_cont"><img src="/Button (2).png" class="but_cont" alt="">
+                                    <span class="price">{{el.price}}$</span>
+                                </div>
                             </a>
                         </div>
                     </div>
@@ -119,7 +121,7 @@
                             <div *ngIf="catalog.current_page > 1" (click)="getPreviousPage()">
                                 <img width="70px" src="Frame 2 (1).png" alt="">
                             </div>
-                    </div>
+                        </div>
                         <div>
                             <div *ngIf="catalog.current_page < catalog.max_page" (click)="getNextPage()">
                                 <img width="70px" src="/Frame 2 (2).png" alt="">
