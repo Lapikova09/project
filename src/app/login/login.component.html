@@ -53,15 +53,32 @@
     </div>
 
     <div *ngIf="token != ''" class="container">
-        <div class="profile">
-            <p class="profile_text" >Your profile</p>
-            <p class="user_info">Name: {{user.name}}</p> 
-            <p class="user_info">Email: {{user.email}}</p>
-            <p class="user_info">Balance: {{user.money}}</p>
-            <p class="user_info">Chosen currency: {{user.currency}}</p>
-            <p class="user_info">Chosen language: {{user.language}}</p>
-            <div class="logout_but" (click)="logout()">logout</div>
+        <p class="profile_text" >Your profile</p>
+        <div class="prof_cont">
+            <div class="profile">
+                <p class="user_info">Name: {{user.name}}</p> 
+                <p class="user_info">Email: {{user.email}}</p>
+                <p class="user_info">Balance: {{user.money}}</p>
+                <p class="user_info">Chosen currency: {{user.currency}}</p>
+                <p class="user_info">Chosen language: {{user.language}}</p>
+            </div>
+            <div class="settings">
+                <p class="user_info">Settings</p> 
+                <select class="user_info set" [(ngModel)]="currency" (change)="changeUserSettings()">
+                    <option value="" disabled>Choose currency</option>
+                    <option *ngFor="let el of currencies" [value]="el">
+                        {{ el }}
+                    </option>
+                </select>
+                <select class="user_info set" [(ngModel)]="language" (change)="changeUserSettings()">
+                    <option value="" disabled>Choose language</option>
+                    <option *ngFor="let el of languages" [value]="el">
+                        {{ el }}
+                    </option>
+                </select>
+            </div>
         </div>
+        <div class="logout_but profile_text" (click)="logout()">Logout</div>
     </div>
 
     <div *ngIf="token ==''" class="container">

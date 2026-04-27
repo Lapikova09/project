@@ -196,21 +196,12 @@
     background-color: #232321;
     color: white;
     padding: 5px;
-    margin: 3px;
     width: 155px;
     border-radius: 7px;
-    text-align: center;
-    margin-right: auto;
-    margin-left: auto;
 }
 
 .profile{
-    margin-right: auto;
-    margin-left: auto;
     width: 400px;
-    background-color:  #e3e3d4;
-    border-radius: 20px;
-    margin-top: 30px;
     padding: 20px;
 }
 
@@ -219,7 +210,7 @@
     font-weight: 600;
     line-height: 28px;
     text-align: center;
-    margin-bottom: 30px;
+    margin: 30px;
 }
 
 .user_info{
@@ -236,4 +227,20 @@
     font-size: 24px;
     border-radius: 10px;
     margin-top: 10px;
+}
+
+.prof_cont{
+    margin-top: 30px;
+    display: flex;
+    justify-content: left;
+    gap: 150px;
+}
+
+.set{
+    border-radius: 10px;
+}
+
+.settings{
+    display: flex;
+    flex-direction: column;
 }

@@ -16,7 +16,7 @@ export class MainService {
 
   // фотки и слайдеры(товаров, комментариев)
 
-  // изменение валюты и языка пользователя(новый токен, символ валюты)
+  // новый токен, символ валюты
   // Страницы для админа
 
 
@@ -178,5 +178,22 @@ export class MainService {
     });
 
     return this.http.post(`${this.apiUrl}/order/create`, {}, {headers});
+  }
+
+  patchUserInfo(currency: string|null, language: string|null){
+    const headers = new HttpHeaders({
+        'Authorization': `Bearer ${this.token}`,
+    });
+    
+    let params = new HttpParams();
+    if(currency) params = params.set('currency', currency);
+    if(language) params = params.set('language', language);
+
+     const options = {
+      headers: headers,
+      params: params
+    };
+    
+    return this.http.patch(`${this.apiUrl}/users/me`, {}, options);
   }
 }

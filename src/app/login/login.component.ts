@@ -28,6 +28,11 @@ export class LoginComponent {
   register_password:string|null = null
   register_password_confirm:string|null = null
   code:number = 0
+  currency: string = '';
+  language: string = '';
+    
+  currencies = ['BYN','USD','RUB'];
+  languages = ['ru', 'en']
  
   categories:Category[]=[
     {
@@ -126,6 +131,8 @@ export class LoginComponent {
       next: (response) => {
         console.log('Успешно:', response);
         this.user = response
+        this.currency = response.currency
+        this.language = response.language
       },
       error: (error) => {
         console.error('Ошибка:', error);
@@ -158,6 +165,18 @@ export class LoginComponent {
         console.log('Успешно:', response);
         this.code_page_shown = false
         this.login_shown = true
+      },
+      error: (error) => {
+        console.error('Ошибка:', error);
+      }
+    });
+  }
+
+  changeUserSettings(){
+    this.apiService.patchUserInfo(this.currency, this.language).subscribe({
+      next: (response:any) => {
+        console.log('Успешно:', response);
+        this.user = response
       },
       error: (error) => {
         console.error('Ошибка:', error);
