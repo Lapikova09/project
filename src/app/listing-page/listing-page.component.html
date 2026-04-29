@@ -60,6 +60,7 @@
                     <p class="filt">Filters</p>
                     <div class="refine">
                         <p>CATEGORY</p>
+                        <div class="sort_but " (click)="resetFilter()">Reset filter</div>
                     </div>
                     <div class="type">
                         <div *ngFor="let el of categories">
@@ -77,9 +78,6 @@
                             </div>
                         </div>
                     </div>
-                    <ul class="sort">
-                        <div class="sort_but" (click)="resetFilter()">Reset filter</div>
-                    </ul>
                     <div class="refine">
                         <p>PRICE</p>
                     </div>
@@ -100,9 +98,12 @@
                     </ul>
                 </div>
                 <div >
+                     <div class="catalog" *ngIf="catalog.items.length == 0">
+                        No results
+                     </div>
                     <div class="catalog" *ngIf="catalog.items.length != 0">
                         <div class="card" *ngFor="let el of catalog.items" >
-                            <img class="item_img" src="{{el.img_url}}" alt="#">
+                            <img class="item_img" src="NOPHOTO.png"  alt="#">   <!--src="{{el.img_url}}" -->
                             <p>{{el.name}}</p>
                             <p>Rating: {{el.rating}}</p>
                             <a
@@ -111,22 +112,28 @@
                                 [routerLinkActiveOptions]="{ exact: true }"
                             >
                                 <div (click)="getId(el.id)" class="but_cont"><img src="/Button (2).png" class="but_cont" alt="">
-                                    <span class="price">{{el.price}}$</span>
+                                    <span class="price">{{el.price}}</span>
                                 </div>
                             </a>
                         </div>
                     </div>
                     <div class="pages_cont">
-                        <div>
+                        <div class="buts">
                             <div *ngIf="catalog.current_page > 1" (click)="getPreviousPage()">
                                 <img width="70px" src="Frame 2 (1).png" alt="">
                             </div>
                         </div>
-                        <div>
+                        <div class="buts">
                             <div *ngIf="catalog.current_page < catalog.max_page" (click)="getNextPage()">
                                 <img width="70px" src="/Frame 2 (2).png" alt="">
                             </div>
                         </div>
+                        <div class="buts">
+                            <div *ngIf="catalog.current_page !=0" class="page_number">
+                                {{catalog.current_page}}<p class="max_page">/{{catalog.max_page}}</p>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>

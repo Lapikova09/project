@@ -1,0 +1,42 @@
+
+services:
+  db:
+    image: my_db_image
+    container_name: shopapi_db
+    restart: always
+    environment:
+      POSTGRES_USER: povodir
+      POSTGRES_PASSWORD: 1111
+      POSTGRES_DB: shop
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d
+
+
+  redis:
+    image: my_redis_image
+    container_name: shopapi_redis
+    restart: always
+    ports:
+      - "6379:6379"
+
+  web:
+    image: shop-api-1.2:latest
+    container_name: shopapi_web
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+    environment:
+      DATABASE_URL: postgresql://povodir:1111@db:5432/shop
+      REDIS_URL: redis://redis:6379/0
+
+
+volumes:
+  postgres_data:

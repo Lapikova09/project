@@ -170,7 +170,7 @@
 .log_but{
     width: 175px;
     height: 75px;
-    background-color: black;
+    background-color: #232321;;
     border-radius: 10px;
     font-size: 20px;
     color: aliceblue;
@@ -221,7 +221,7 @@
 }
 
 .login{
-    background-color: black;
+    background-color: #232321;;
     color: white;
     padding: 10px;
     font-size: 24px;

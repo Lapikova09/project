@@ -3,7 +3,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MainService } from '../main.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Bag, BagItem, Category, Item } from '../interfaces';
+import { Bag, BagItem, Category, Item, Order } from '../interfaces';
 
 @Component({
   selector: 'app-bag',
@@ -13,18 +13,20 @@ import { Bag, BagItem, Category, Item } from '../interfaces';
 })
 export class BagComponent {
 
-  constructor(private apiService:MainService){
-  
-  }
+  constructor(private apiService:MainService){}
+
+  orders_shown:boolean = false
+  bag_text:string = 'Check current orders'
+  text:string = 'bag'
 
   categories:Category[]=[
     {
-      name:"asad",
+      name:"string",
       id:1,
       children:[],
       parent_id: 0
     },  {
-      name:"wddasds",
+      name:"string",
       id:1,
       children:[],
       parent_id: 0
@@ -36,6 +38,15 @@ export class BagComponent {
     item_count: 0,
     full_price: 0
   }
+
+  orders:Order[]=[{
+    id: 0,
+    items: [],
+    created_at: '',
+    updated_at: '',
+    price: 0,
+    status: ''
+  }]
 
   ngOnInit(){
     this.getAllCategories(), 
@@ -54,7 +65,7 @@ export class BagComponent {
   }
   
   getItems(){
-    this.apiService.getBagItems(6).subscribe({
+    this.apiService.getBagItems().subscribe({
       next: (data: Bag) => {
         this.bag = data;
         console.log('Товары успешно получены')
@@ -66,7 +77,7 @@ export class BagComponent {
   }
 
   deleteItem(itemId:number){
-    this.apiService.deleteItemFromBag(itemId, 6).subscribe({
+    this.apiService.deleteItemFromBag(itemId).subscribe({
       next: (response: any) => {
         console.log('Товар удален', response)
         this.getItems()
@@ -82,6 +93,32 @@ export class BagComponent {
       next: (response: any) => {
         console.log('Товар заказан', response)
         this.getItems()
+      },
+      error: (err) => {
+        console.error("Ошибка при получении данных:", err);
+      }
+    });
+  }
+
+  showOrders(){
+    if(this.orders_shown == false){
+      this.orders_shown = true
+      this.bag_text = 'Show your bag'
+      this.text = 'orders'
+      this.getOrders()
+    }else{
+      this.orders_shown = false
+      this.bag_text = 'Check current orders'
+      this.text = 'bag'
+    }
+    
+  }
+
+  getOrders(){
+    this.apiService.getOrders().subscribe({
+      next: (data: Order[]) => {
+        this.orders = data;
+        console.log('Заказы успешно получены')
       },
       error: (err) => {
         console.error("Ошибка при получении данных:", err);

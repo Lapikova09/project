@@ -206,10 +206,6 @@
     width: 436px;
 }
 
-.show_comments{
-    width: 150px;
-}
-
 .progress-bar-image-container {
   width: 100%; 
   position: relative;
@@ -252,4 +248,16 @@
 
 .pages_cont div{
     width: 100px;
+}
+
+.release_cont{
+    display: flex;
+    justify-content: space-between;
+    gap: 200px;
+}
+
+.comments_buts{
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 10px;
 }

@@ -37,6 +37,23 @@ export interface BagItem{
     rating: number
 }
 
+export interface OrderItem{
+    item_id: number,
+    item_name: string,
+    item_image: string,
+    count: number,
+    item_price: number
+}
+
+export interface Order{
+    id: number,
+    items: OrderItem[],
+    created_at: string,
+    updated_at: string,
+    price: number,
+    status: string
+}
+
 export interface Catalog{
     items:Item[],
     current_page: number,

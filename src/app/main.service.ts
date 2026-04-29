@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Category, Item, BagItem, Catalog, Bag, User, RegisterInfo, CommentsCatalog } from './interfaces';
+import { Category, Item, BagItem, Catalog, Bag, User, RegisterInfo, CommentsCatalog, Order } from './interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +14,12 @@ export class MainService {
 
   token:string = ''
 
-  // фотки и слайдеры(товаров, комментариев)
+  // слайдеры
+  // новый токен
+  // символ валюты
+  // запросы для админа
 
-  // новый токен, символ валюты
-  // Страницы для админа
+  // дизайн проекта в принципе
 
 
   getItems(min_price:number|null, max_price:number|null, sort_type:string, page:number, categoryID:number|null, search_q:string|null): Observable<Catalog> {
@@ -43,6 +45,8 @@ export class MainService {
     if(search_q !== null){
        params = params.set('search_q', search_q.toString());
     }
+
+    params = params.set('limit', 9);
 
     const options = {
       headers: headers,
@@ -77,32 +81,20 @@ export class MainService {
     return this.http.post(`${this.apiUrl}/basket/${itemId}`, {}, options);
   }
 
-  getBagItems(userId:number){
+  getBagItems(){
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.token}`,
     });
-    const param = new HttpParams().set('user_id', userId.toString());
-    
-    const options = {
-      headers: headers,
-      params: param
-    };
 
-    return this.http.get<Bag>(`${this.apiUrl}/basket`, options);
+    return this.http.get<Bag>(`${this.apiUrl}/basket`, {headers});
   }
 
-  deleteItemFromBag(itemId:number, userId:number){
+  deleteItemFromBag(itemId:number){
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.token}`
     });
-    const param = new HttpParams().set('user_id', userId.toString());
-    
-    const options = {
-      headers: headers,
-      params: param
-    };
 
-    return this.http.delete<BagItem>(`${this.apiUrl}/basket/${itemId}`, options);
+    return this.http.delete<BagItem>(`${this.apiUrl}/basket/${itemId}`, {headers});
   }
 
   login(password:string, username:string): Observable<any>{
@@ -195,5 +187,13 @@ export class MainService {
     };
     
     return this.http.patch(`${this.apiUrl}/users/me`, {}, options);
+  }
+
+  getOrders(){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`
+    });
+
+    return this.http.get<Order[]>(`${this.apiUrl}/order/me`, {headers});
   }
 }

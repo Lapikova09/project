@@ -41,6 +41,15 @@
     margin-top: 48px;
 }
 
+.order{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 15px;
+    background: var(--Gray, #E7E7E3);
+}
+
 .card_text{
     width: 502px;
     margin-left: 10px;
@@ -91,7 +100,6 @@
 
 .summary{
     width: 418px;
-    margin-top: 24px;
 }
 
 .item{
@@ -112,3 +120,12 @@
     margin-top: 24px;
 }
 
+.orders_but{
+    padding: 16px;
+    background-color: #232321;;
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-size: 20px;
+}

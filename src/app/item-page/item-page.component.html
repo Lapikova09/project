@@ -49,7 +49,8 @@
     <div class="container">
         <div class="product_cont">
             <div class="release_cont">
-                <p class="adidas">{{item.name}}</p>
+                <div>
+                    <p class="adidas">{{item.name}}</p>
                 <p class="blue_text">{{item.price}}$</p>
                 <div class="size_cont">
                     <p>Rating: {{item.rating}}</p>
@@ -72,13 +73,15 @@
                 </div>
                 <p class="product">ABOUT THE PRODUCT</p>
                 <p class="color">{{item.info}}</p>
-                <img src="{{item.img_url}}" alt="">
+                </div>
+                
+                <img src="NOPHOTO.png" width="700px" alt="">
             </div>
         </div>
         <div class="comment_cont">
             <p>Comments: </p>
-            <div (click)="showFormForNewComment()">Add your comment</div>
-            <div class="show_comments">
+            <div class="comments_buts" (click)="showFormForNewComment()">Add your comment</div>
+            <div class="comments_buts">
                 <div *ngIf="newComment == false" (click)="showAllComments()">{{textForCommentButton}}</div>
             </div>
         </div>

@@ -48,11 +48,11 @@
     <div class="container">
         <div class="bag_cont">
             <div class="your_bag">
-                <p class="your_bag_text">Your Bag</p>
+                <p class="your_bag_text">Your {{text}}</p>
                 <p class="items">Items in your bag not reserved- check out now to make them yours.</p>
-                <div *ngIf="bag.items.length != 0" class="cart_list">
+                <div *ngIf="orders_shown == false" class="cart_list">
                     <div class="card" *ngFor="let el of bag.items" >
-                        <img src="" alt="">
+                        <img src="NOPHOTO.png" width="250px" alt="">
                         <div class="card_text">
                             <div class="prize">
                                 <p>{{el.item_name}}</p>
@@ -67,8 +67,33 @@
                         </div>
                     </div>
                 </div>
+                <div *ngIf="orders_shown == true" class="cart_list">
+                    <div class="order" *ngFor="let order of orders">
+                        <div class="card_text">
+                            <p>{{order.created_at}}</p>
+                            <p>{{order.updated_at}}</p>
+                            <p>{{order.price}}</p>
+                            <p>{{order.status}}</p>
+                        </div>
+                        <div class="card" *ngFor="let el of order.items">
+                            <img src="NOPHOTO.png" width="250px" alt="">
+                            <div class="card_text">
+                                <div class="prize">
+                                    <p>{{el.item_name}}</p>
+                                    <p class="purp">{{el.item_price}} $</p>
+                                </div>
+                                <p class="grey">Men’s Road Running Shoes</p>
+                                <p class="grey">Enamel Blue/ University White</p>
+                                <div class="size_quan">
+                                    <p class="grey">Count: {{el.count}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="summary">
+                <div class="orders_but" (click)="showOrders()">{{bag_text}}</div>
                 <p class="your_bag_text">Order Summary</p>
                 <div class="item">
                     <p>Summery</p>
@@ -78,7 +103,7 @@
                     <p>Count</p>
                     <p class="quantity">{{bag.item_count}}</p>
                 </div>
-                <div (click)="postItems()"><img src="/checkout.png" alt=""></div>
+                <div class="orders_but" (click)="postItems()">Checkout</div>
             </div>
         </div>
     </div>
