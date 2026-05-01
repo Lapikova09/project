@@ -61,11 +61,7 @@
                         </div> 
                     </div>                   
                 </div>
-                <div class="cart_cont">
-                    <button class='add_to_cart1'><img src="/style_layer (2).png" alt=""></button>
-                    <button><img src="/style_layer (3).png" alt=""></button>
-                </div>
-                <div (click)="postItem()" class="buy"><img src="/Button (18).png" alt=""></div>  
+                <div (click)="postItem()" class="buy" class="add_but">Add to your bag</div>  
                 <p class="size_cont">Stock: {{item.stock}}</p>
                 <div class="count_cont">
                     <div class="count">Count:</div>
@@ -81,8 +77,8 @@
         <div class="comment_cont">
             <p>Comments: </p>
             <div class="comments_buts" (click)="showFormForNewComment()">Add your comment</div>
-            <div class="comments_buts">
-                <div *ngIf="newComment == false" (click)="showAllComments()">{{textForCommentButton}}</div>
+            <div>
+                <div class="comments_buts" *ngIf="newComment == false" (click)="showAllComments()">{{textForCommentButton}}</div>
             </div>
         </div>
         <div *ngIf="newComment" class="new_comment">

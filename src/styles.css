@@ -112,6 +112,8 @@ html,body{
     border-radius: 10px;
 	margin-left: 100px;
 	border: 2px solid black;
+    cursor: pointer;
+    user-select: none;
 }
 
 .new_products{
@@ -122,6 +124,8 @@ html,body{
 	font-weight: 600;
 	font-size: 22px;
 	padding: 5px;
+    cursor: pointer;
+    user-select: none;
 }
 
 .head_ul{
@@ -131,7 +135,6 @@ html,body{
     align-items: center;
     gap: 40px;
 }
-
 
 .head_ul{
     display: flex;
@@ -142,7 +145,6 @@ html,body{
 }
 
 .yel_circ{
-
     align-items: center;
     border-radius: 32px;
     background: var(--Yellow, #FFA52F);
@@ -152,6 +154,30 @@ html,body{
 .bag{
 	padding-right: 0px;
 }
+
+.head_ul li a {
+    cursor: pointer;
+    user-select: none;
+}
+
+.head_ul li a:hover {
+    opacity: 0.7;
+}
+
+.yel_circ:hover {
+    background: #e6952a;
+    filter: brightness(1.2); 
+}
+
+.new_products:hover {
+    color: #e6952a; 
+}
+
+.click_shop:hover {
+    filter: brightness(1.1); 
+    border-color: #FFA52F; 
+}
+
 
 
 

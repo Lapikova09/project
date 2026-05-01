@@ -62,7 +62,7 @@
                             <p class="grey">Enamel Blue/ University White</p>
                             <div class="size_quan">
                                 <p class="grey">Count: {{el.count}}</p>
-                                <div (click)="deleteItem(el.item_id)" class='deleteCard'><img src="/Bin.png" alt=""></div>
+                                <div (click)="deleteItem(el.item_id)" class="deleteCard"><img src="/Bin.png" alt=""></div>
                             </div>
                         </div>
                     </div>
@@ -70,15 +70,14 @@
                 <div *ngIf="orders_shown == true" class="cart_list">
                     <div class="order" *ngFor="let order of orders">
                         <div class="card_text">
-                            <p>{{order.created_at}}</p>
-                            <p>{{order.updated_at}}</p>
-                            <p>{{order.price}}</p>
-                            <p>{{order.status}}</p>
+                            <p class="price">Created: {{order.created_at}}</p>
+                            <p class="price">Full price: {{order.price}}</p>
+                            <p class="price">Status: {{order.status}}</p>
                         </div>
                         <div class="card" *ngFor="let el of order.items">
                             <img src="NOPHOTO.png" width="250px" alt="">
                             <div class="card_text">
-                                <div class="prize">
+                                <div class="price">
                                     <p>{{el.item_name}}</p>
                                     <p class="purp">{{el.item_price}} $</p>
                                 </div>

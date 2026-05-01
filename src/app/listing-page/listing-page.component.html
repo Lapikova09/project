@@ -60,19 +60,25 @@
                     <p class="filt">Filters</p>
                     <div class="refine">
                         <p>CATEGORY</p>
-                        <div class="sort_but " (click)="resetFilter()">Reset filter</div>
+                        <div class="sort_but reset " (click)="resetFilter()">Reset filter</div>
                     </div>
                     <div class="type">
                         <div *ngFor="let el of categories">
                             <label>
-                                <input [value]="el.id" name="radioGroupCategory" type="radio" [checked]="selectedCategoryId === el.id" (change)="onCategoryChange(el.id, 'category')">
-                                {{el.name}}
+                                <input 
+                                    type="radio" 
+                                    [checked]="selectedCategoryId === el.id" 
+                                    (click)="onCategoryChange(el.id, 'category')">
+                                    {{el.name}}
                             </label>
-                            <div *ngIf="selectedCategoryIdForChildren == el.id">
+                            <div *ngIf="selectedCategoryIdForChildren === el.id">
                                 <div class="child" *ngFor="let child of el.children">
                                     <label>
-                                        <input [value]="child.id" name="radioGroupChildren" type="radio" (change)="onCategoryChange(child.id, 'child')">
-                                        {{child.name}}
+                                        <input 
+                                            type="radio" 
+                                            [checked]="selectedCategoryId === child.id" 
+                                            (click)="onCategoryChange(child.id, 'child')">
+                                            {{child.name}}
                                     </label>
                                 </div>
                             </div>

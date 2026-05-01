@@ -260,4 +260,30 @@
     border: 2px solid black;
     padding: 10px;
     border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.comments_buts:active {
+  transform: scale(0.98); 
+  background-color: #f0f0f0; 
+  color: #949494; 
+  border: 2px solid #949494;
+}
+
+.add_but{
+  background-color: #4A69E1; 
+  color: #ffffff; 
+  text-transform: uppercase;
+  padding: 15px 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+  margin-top: 20px ;
+  font-weight: 600;
+}
+
+.add_but:active {
+  transform: scale(0.97); 
+  background-color: #3A55C5; 
 }

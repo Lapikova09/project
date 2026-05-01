@@ -143,15 +143,16 @@ export class ItemPageComponent {
     this.apiService.postComment(this.activeId, this.messageForComment, this.ratingForComment).subscribe({
       next: (response) => {
         console.log("Комментарий добавлен:", response);
-        this.newComment = false
         this.getComments()
-        this.commentsToShow = 3
-        this.textForCommentButton = 'Show all'
       },
       error: (err) => {
         console.error("Ошибка при получении данных:", err);
       }
     });
+    this.newComment = false
+    this.getComments()
+    this.commentsToShow = 3
+    this.textForCommentButton = 'Show all'
   }
 
   sort(type:string){
