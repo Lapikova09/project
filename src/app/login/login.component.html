@@ -89,7 +89,7 @@
         <div class="login_cont">
             <div class="log" *ngIf="login_shown">
                 <h6>Login</h6>
-                <p class="forgot">Forgot your password?</p>
+                <div class="forgot" (click)="reset()">Forgot your password?</div>
                 <input [(ngModel)]="login_email" class="email" type="text" placeholder="Email">
                 <input [(ngModel)]="login_password" class="password" type="text" placeholder="Password">
                 <div class="login" (click)="login()">Login</div>
@@ -121,8 +121,25 @@
             <div class="register" *ngIf="code_page_shown">
                 <h6>Confirm</h6>
                 <p class="bl_text">A code was sent to your email</p>
-                <input [(ngModel)]="code" class="name" type="number" placeholder="Enter code">
+                <input [(ngModel)]="code" class="name" type="text" placeholder="Enter code">
                 <div class="login" (click)="confirm()">Check your code</div>
+            </div>
+            <div class="reset_password" *ngIf="reset_page_shown">
+                <p class="sign_up">Reset password</p>
+                <p class="bl_text">Enter your email</p>
+                <input [(ngModel)]="reset_email" class="name" type="text" placeholder="Email">
+                <div class="login" (click)="sendCodeToReset()">Send a code</div>
+            </div>
+            <div class="register" *ngIf="reset_code_page_shown">
+                <h6>Confirm</h6>
+                <p class="bl_text">A code was sent to your email</p>
+                <input [(ngModel)]="reset_code" class="name" type="text" placeholder="Enter code">
+                <div class="login" (click)="verify()">Check your code</div>
+            </div>
+            <div class="register" *ngIf="reset_new_password_shown">
+                <h6>Enter new password</h6>
+                <input [(ngModel)]="reset_password" class="name" type="text" placeholder="Password">
+                <div class="login" (click)="resetPassword()">Reset password</div>
             </div>
             <div class="join">
                 <h2>Join  Kicks Club Get Rewarded <br> Today.</h2>

@@ -20,6 +20,9 @@ export class LoginComponent {
   login_shown:boolean = true
   register_shown:boolean = false
   code_page_shown:boolean = false
+  reset_page_shown:boolean = false
+  reset_code_page_shown:boolean = false
+  reset_new_password_shown:boolean = false
   token:string = ''
   login_email:string|null = null
   login_password:string|null = null
@@ -27,7 +30,10 @@ export class LoginComponent {
   register_email:string|null = null
   register_password:string|null = null
   register_password_confirm:string|null = null
-  code:number = 0
+  reset_email:string|null = null
+  reset_code: string = ''
+  reset_password:string|null = null
+  code: string = ''
   currency: string = '';
   language: string = '';
     
@@ -75,12 +81,24 @@ export class LoginComponent {
     this.login_shown = false
     this.register_shown = true
     this.code_page_shown = false
+    this.reset_page_shown = false
+    this.reset_new_password_shown = false
   }
 
   log(){
     this.login_shown = true
     this.register_shown = false
     this.code_page_shown = false
+    this.reset_page_shown = false
+    this.reset_new_password_shown = false
+  }
+
+  reset(){
+    this.login_shown = false
+    this.register_shown = false
+    this.code_page_shown = false
+    this.reset_page_shown = true
+    this.reset_new_password_shown = false
   }
     
   getAllCategories(){
@@ -160,7 +178,7 @@ export class LoginComponent {
   }
 
   confirm(){
-    this.apiService.confirmRegister(this.register_info.email, this.code.toString()).subscribe({
+    this.apiService.confirmRegister(this.register_info.email, this.code).subscribe({
       next: (response) => {
         console.log('Успешно:', response);
         this.code_page_shown = false
@@ -177,6 +195,49 @@ export class LoginComponent {
       next: (response:any) => {
         console.log('Успешно:', response);
         this.user = response
+      },
+      error: (error) => {
+        console.error('Ошибка:', error);
+      }
+    });
+  }
+
+  sendCodeToReset(){
+    if(this.reset_email)
+    this.apiService.sendCodeToReset(this.reset_email).subscribe({
+      next: (response) => {
+        console.log('Успешно:', response);
+        this.reset_page_shown = false
+        this.reset_code_page_shown = true
+      },
+      error: (error) => {
+        console.error('Ошибка:', error);
+      }
+    });
+  }
+
+  verify(){
+    if(this.reset_email && this.reset_code)
+    this.apiService.verifyEmail(this.reset_email, this.reset_code).subscribe({
+      next: (response) => {
+        console.log('Успешно:', response);
+        this.reset_code_page_shown = false
+        this.reset_new_password_shown = true
+      },
+      error: (error) => {
+        console.error('Ошибка:', error);
+      }
+    });
+  }
+
+  resetPassword(){
+    if(this.reset_email && this.reset_code && this.reset_password)
+    this.apiService.resetPassword(this.reset_email, this.reset_code, this.reset_password).subscribe({
+      next: (response) => {
+        console.log('Успешно:', response);
+        this.reset_new_password_shown = false; 
+        this.log();
+        this.reset_email=null
       },
       error: (error) => {
         console.error('Ошибка:', error);

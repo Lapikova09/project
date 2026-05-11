@@ -194,4 +194,28 @@ export class MainService {
 
     return this.http.get<Order[]>(`${this.apiUrl}/order/me`, {headers});
   }
+  
+  sendCodeToReset(email:string){
+    const params = new HttpParams()
+      .set('email', email)
+
+    return this.http.post(`${this.apiUrl}/reset_password/request`, {}, {params});
+  }
+
+  verifyEmail(email:string, code:string){
+    const params = new HttpParams()
+      .set('email', email)
+      .set('code', code)
+
+    return this.http.post(`${this.apiUrl}/reset_password/verify`, {}, {params});
+  }
+
+  resetPassword(email:string, code:string, password:string){
+    const params = new HttpParams()
+      .set('email', email)
+      .set('code', code)
+      .set('password', password)
+
+    return this.http.post(`${this.apiUrl}/reset_password/confirm`, {}, {params});
+  }
 }

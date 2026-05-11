@@ -23,6 +23,8 @@
     line-height: 22px;
     margin-top: 8px;
     text-decoration-line: underline;
+    cursor: pointer;
+    user-select: none;
 }
 
 .email{
