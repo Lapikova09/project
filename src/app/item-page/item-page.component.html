@@ -51,26 +51,29 @@
             <div class="release_cont">
                 <div>
                     <p class="adidas">{{item.name}}</p>
-                <p class="blue_text">{{item.price}}$</p>
-                <div class="size_cont">
-                    <p>Rating: {{item.rating}}</p>
-                    <div>
-                        <div class="progress-bar-image-container" [style.height]="height">
-                            <img src="stars.png" alt="Progress background" class="progress-background-image">
-                            <div class="progress-overlay" [ngStyle]="overlayStyle"></div>
-                        </div> 
-                    </div>                   
+                    <p class="blue_text">{{item.price}} {{currency_icon}}</p>
+                    <div class="size_cont">
+                        <p>Rating: {{item.rating}}</p>
+                        <div>
+                            <div>
+                                <div class="stars_cont" [style.height]="height">
+                                    <img src="stars_black.png" alt="" class="stars_black">
+                                    <div class="stars_yellow_cont" [style.width.%]="getFilledWidth()">
+                                        <img src="stars.png" alt="" class="stars_yellow">
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>                  
+                    </div>
+                    <div (click)="postItem()" class="buy" class="add_but">Add to your bag</div>  
+                    <p class="size_cont">Stock: {{item.stock}}</p>
+                    <div class="count_cont">
+                        <div class="count">Count:</div>
+                        <input [(ngModel)]="count" class="count_input" type="number" (blur)="validateOnBlur()" min="1">
+                    </div>
+                    <p class="product">ABOUT THE PRODUCT</p>
+                    <p class="color">{{item.info}}</p>
                 </div>
-                <div (click)="postItem()" class="buy" class="add_but">Add to your bag</div>  
-                <p class="size_cont">Stock: {{item.stock}}</p>
-                <div class="count_cont">
-                    <div class="count">Count:</div>
-                    <input [(ngModel)]="count" class="count_input" type="number">
-                </div>
-                <p class="product">ABOUT THE PRODUCT</p>
-                <p class="color">{{item.info}}</p>
-                </div>
-                
                 <img src="NOPHOTO.png" width="700px" alt="">
             </div>
         </div>
@@ -84,7 +87,7 @@
         <div *ngIf="newComment" class="new_comment">
             <p class="product">Add comment info</p>
             <p>Rating</p>
-            <input [(ngModel)]="ratingForComment" class="comment_info" type="number" placeholder="Rating">
+            <input [(ngModel)]="ratingForComment" class="comment_info" type="number" placeholder="Rating" (blur)="validateOnBlur1()" min="1" max="5">
             <p>Message</p>
             <input [(ngModel)]="messageForComment" class="comment_info" type="text" placeholder="Message">
             <div class="comment_but" (click)="addComment()">Add comment</div>

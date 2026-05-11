@@ -43,10 +43,12 @@ export class ListingPageComponent {
   selectedCategoryId:number|null = null
   selectedCategoryIdForChildren:number|null = null
   search_q:string|null = null
+  currency_icon:string ='$'
 
   ngOnInit(){
     this.getAllItems(),
-    this.getAllCategories()
+    this.getAllCategories(), 
+    this.getUser()
   }
 
   getAllItems(){
@@ -77,6 +79,7 @@ export class ListingPageComponent {
 
   sort(type:string){
     this.sort_type = type
+    this.page = 1;
     this.getAllItems()
   }
 
@@ -91,6 +94,7 @@ export class ListingPageComponent {
   }
 
   onCategoryChange(categoryId:number, key:string){
+    this.page = 1;
     if(key == 'category'){
       this.selectedCategoryIdForChildren = categoryId
     }
@@ -99,8 +103,36 @@ export class ListingPageComponent {
   }
 
   resetFilter(){
+    this.page = 1;
     this.selectedCategoryIdForChildren = null
     this.selectedCategoryId = null
+    this.search_q = null;
+    this.min_price = null; 
+    this.max_price = null;
     this.getAllItems()
   }
+
+  getUser(){
+     this.apiService.getUser().subscribe({
+      next: (response) => {
+        console.log('Успешно:', response);
+        if(response.currency == 'USD'){
+          this.currency_icon = "$"
+        }else if(response.currency == 'RUB'){
+          this.currency_icon = "₽"
+        }else if(response.currency == 'BYN'){
+          this.currency_icon = "Br"
+        }
+      },
+      error: (error) => {
+        console.error('Ошибка:', error);
+      }
+    });
+  }
+
+  onSearchInput(): void {
+    this.page = 1; 
+    this.getAllItems();
+  }
+
 }

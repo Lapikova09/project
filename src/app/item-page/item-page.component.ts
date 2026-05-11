@@ -19,20 +19,14 @@ export class ItemPageComponent {
 
   percentage: number = 0;
   overlayStyle: { [key: string]: string } = {};
-
   height: string = '60px';
-  updateOverlayStyle(): void {
-    let validPercentage = 100 - this.item.rating*100/5
-    this.overlayStyle = {
-      'width': `${validPercentage}%`,
-      'background-color': '#E7E7E3',
-      'height': '100%',
-      'position': 'absolute',
-      'top': '0',
-      'right': '0',
-      'z-index': '2',
-      'transition': 'width 0.3s ease-in-out'
-    };
+
+  getFilledWidth(): number {
+    return (this.item.rating / 5) * 100;
+  }
+
+  updateRating(newRating: number): void {
+    this.item.rating = newRating;
   }
 
   activeId:number = 0
@@ -40,10 +34,11 @@ export class ItemPageComponent {
   commentsToShow:number = 3
   newComment:boolean = false
   messageForComment:string = ''
-  ratingForComment:number = 0
+  ratingForComment:number = 1
   textForCommentButton:string = 'Show all'
   sort_type:string = 'date_desc'
   page:number = 1
+  currency_icon:string = '$'
 
   item:Item = {
     id: 0,
@@ -75,7 +70,8 @@ export class ItemPageComponent {
   ngOnInit(){
     this.getItem(),
     this.getAllCategories(),
-    this.getComments()
+    this.getComments(), 
+    this.getUser()
   }
 
   getItem(){
@@ -83,7 +79,7 @@ export class ItemPageComponent {
       next: (data: Item) => {
         this.item = data;
         console.log("Получил");
-        this.updateOverlayStyle()
+        this.getFilledWidth()
       },
       error: (err) => {
         console.log(this.activeId)
@@ -168,5 +164,35 @@ export class ItemPageComponent {
   getPreviousPage(){
     this.page--;
     this.getComments()
+  }
+
+  getUser(){
+     this.apiService.getUser().subscribe({
+      next: (response) => {
+        console.log('Успешно:', response);
+        if(response.currency == 'USD'){
+          this.currency_icon = "$"
+        }else if(response.currency == 'RUB'){
+          this.currency_icon = "₽"
+        }else if(response.currency == 'BYN'){
+          this.currency_icon = "Br"
+        }
+      },
+      error: (error) => {
+        console.error('Ошибка:', error);
+      }
+    });
+  }
+
+  validateOnBlur() {
+    if (this.count < 1 || !this.count) {
+      this.count = 1;
+    }
+  }
+
+  validateOnBlur1() {
+    if (this.ratingForComment < 1 || !this.ratingForComment || this.ratingForComment > 5) {
+      this.ratingForComment = 1;
+    }
   }
 }

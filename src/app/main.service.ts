@@ -14,13 +14,11 @@ export class MainService {
 
   token:string = ''
 
+  // ограничения, чтобы в минус уходить
   // слайдеры
   // новый токен
-  // символ валюты
   // запросы для админа
-
-  // дизайн проекта в принципе
-
+  // восстановление пароля 
 
   getItems(min_price:number|null, max_price:number|null, sort_type:string, page:number, categoryID:number|null, search_q:string|null): Observable<Catalog> {
     const headers = new HttpHeaders({

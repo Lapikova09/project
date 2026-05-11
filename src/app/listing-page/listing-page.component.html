@@ -53,7 +53,7 @@
                     <p class="items">{{catalog.max_page}} pages</p>
                 </div>
                 <p class="choose">CHOOSE FILTERS YOU NEED</p>
-                <input class="search" type="text"  [(ngModel)]="search_q"  placeholder="Search..." (input)="getAllItems()">
+                <input class="search" type="text"  [(ngModel)]="search_q"  placeholder="Search..." (input)="onSearchInput()">
             </div>
             <div class="catalog_cont">
                 <div class="filters">
@@ -88,8 +88,14 @@
                         <p>PRICE</p>
                     </div>
                     <div class="refine">
-                        <div><label>From</label><input [(ngModel)]="min_price"  (input)="getAllItems()" class="money_filter" type="number"></div>
-                        <div><label>To</label><input [(ngModel)]="max_price" (input)="getAllItems()" class="money_filter" type="number"></div>
+                        <div>
+                            <label>From</label>
+                            <input [(ngModel)]="min_price"  (input)="onSearchInput()" class="money_filter" type="number">
+                        </div>
+                        <div>
+                            <label>To</label>
+                            <input [(ngModel)]="max_price" (input)="onSearchInput()" class="money_filter" type="number">
+                        </div>
                     </div>
                     <p class="filt">Sorting</p>
                     <ul class="sort">
@@ -104,9 +110,9 @@
                     </ul>
                 </div>
                 <div >
-                     <div class="catalog" *ngIf="catalog.items.length == 0">
+                    <div class="catalog" *ngIf="catalog.items.length == 0">
                         No results
-                     </div>
+                    </div>
                     <div class="catalog" *ngIf="catalog.items.length != 0">
                         <div class="card" *ngFor="let el of catalog.items" >
                             <img class="item_img" src="NOPHOTO.png"  alt="#">   <!--src="{{el.img_url}}" -->
@@ -118,12 +124,12 @@
                                 [routerLinkActiveOptions]="{ exact: true }"
                             >
                                 <div (click)="getId(el.id)" class="but_cont"><img src="/Button (2).png" class="but_cont" alt="">
-                                    <span class="price">{{el.price}}</span>
+                                    <span class="price">{{el.price}} {{currency_icon}}</span>
                                 </div>
                             </a>
                         </div>
                     </div>
-                    <div class="pages_cont">
+                    <div class="pages_cont" *ngIf="catalog.items.length != 0">
                         <div class="buts">
                             <div *ngIf="catalog.current_page > 1" (click)="getPreviousPage()">
                                 <img width="70px" src="Frame 2 (1).png" alt="">
