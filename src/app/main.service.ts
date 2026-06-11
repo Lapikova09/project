@@ -13,12 +13,12 @@ export class MainService {
   constructor(private http: HttpClient) {}
 
   token:string = ''
+  categoryIdFromSwiper:number = 0
+  categoryIdActive:boolean = false
 
   // ограничения, чтобы в минус уходить
-  // слайдеры
   // новый токен
   // запросы для админа
-  // восстановление пароля 
 
   getItems(min_price:number|null, max_price:number|null, sort_type:string, page:number, categoryID:number|null, search_q:string|null): Observable<Catalog> {
     const headers = new HttpHeaders({

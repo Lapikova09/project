@@ -50,59 +50,38 @@
         <h2>SHOP<br> <span>NOW</span></h2>
         <div class="pict_cont">
             <img src="/Frame 10.png" alt="">
-            <button class="shop_now"><img src="/Button.png" alt=""></button>
+            <a class="shop_now shop_now_but" routerLink="/listingPage"><img src="/Button.png" alt=""></a>
         </div>
         <div class="drops_cont">
             <div class="drops_text">DON’T MISS OUT NEW DROPS</div>
-            <a href="/listing_page.html"><button><img src="/Button (1).png" alt=""></button></a>
+            <a class="shop_now_but" routerLink="/listingPage"><img src="/Button (1).png" alt=""></a>
         </div>
-        <ul class="train_list">
-           
-        </ul>
     </div>
 
 
     <div class="black_cont">
         <p class="categ">CATEGORIES</p>
-       <!-- <swiper-container class="mySwiper" navigation="true">
-            <swiper-slide><img class="img" src="/img/Frame 27.png" alt=""><a href="/listing_page.html"><button class="but_1"><img src="/img/Button (3).png" alt=""></button></a></swiper-slide>
-            <swiper-slide><img class="img" src="/img/Frame 28.png" alt=""><a href="/listing_page.html"><button class="but_1"><img src="/img/Button (3).png" alt=""></button></a></swiper-slide>
-            <swiper-slide><img class="img" src="/img/pegasus-40-road-running-shoes-5GQzRw (1).png" alt=""><a href="/listing_page.html"><button class="but_1"><img src="/img/Button (3).png" alt=""></button></a><p>Runners</p></swiper-slide>
-            <swiper-slide><img class="img" src="/img/nike-WhiteVachetta-TanGum-Medium-Br-Janoski-G-Tour-Golf-Shoe-white (1).png" alt=""><a href="/listing_page.html"><button class="but_1"><img src="/img/Button (3).png" alt=""></button></a><p>Golf</p></swiper-slide>
-            <swiper-slide><img class="img" src="/img/6707106055.png" alt=""><a href="/listing_page.html"><button class="but_1"><img src="/img/Button (3).png" alt=""></button></a><p>Sneaker</p></swiper-slide>
-        </swiper-container>-->
-    </div>
-
-
-    <div class="container">
-        <div class="text_cont_s3">
-            <p>REVIEWS</p>
-            <button id='a' class="show_all show" ><img src="/Button (4).png" alt=""></button>
-            <button id="b" class="go_back" >GO BACK</button>
-        </div>
-        <div class="reviews_cont">
-            <img src="/Frame 1440.png" alt="">
-            <img src="/Frame 1443.png" alt="">
-            <img src="/Frame 1444.png" alt="">
-        </div>
-        <div class="reviews_swiper show">
-          <!--  <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="/img/Frame 1440.png" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="/img/Frame 1443.png" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="/img/Frame 1444.png" alt="">
-                    </div>
-                    <div class="swiper-pagination"></div>
+        <swiper-container *ngIf="showSwiper && categories.length > 0" 
+            slides-per-view="2" 
+            space-between="20"
+            navigation="true" 
+            pagination="true"
+            autoplay-delay="30000">
+            <swiper-slide *ngFor="let el of categories">
+                <div class="category-slide">
+                    <img src="NOPHOTO.png" alt="#">
+                    <a class="a" routerLink="/listingPage" (click)="sendCategory(el.id)">
+                        {{el.name}}
+                    </a>
                 </div>
-            </div>-->
-        </div>    
-        <img class="swipe show" src="/swipe.png" alt="">
+            </swiper-slide>
+        </swiper-container>
+    
+        <div *ngIf="!showSwiper || categories.length === 0" class="loading-swiper">
+            Загрузка категорий...
+        </div>
     </div>
+    
 
     <div class="container">
         <div class="foot_cont">
@@ -112,7 +91,7 @@
                     <p class="text2">Sign up for free! Join the community.</p>
                     <div class="input_cont">
                         <input type="text" placeholder="Email address" >
-                        <button><img src="/style_layer.png" alt=""></button>
+                        <div><img src="/style_layer.png" alt=""></div>
                     </div>
                 </div>
                 <a href=""><img src="/Group 1.png" alt=""></a>
@@ -128,7 +107,7 @@
                             <p class="or_text">Categories</p>
                             <ul class="gr_text">
                                 <div *ngFor="let el of categories">
-                                    <a class="a" href="/listing_page.html">
+                                    <a class="a" routerLink="/listingPage" (click)="sendCategory(el.id)">
                                         <div>{{el.name}}</div>
                                     </a>
                                 </div>
@@ -137,18 +116,18 @@
                         <div>
                             <p class="or_text">Company</p>
                             <ul class="gr_text">
-                                <a class="a" href=""><li>About</li></a>
-                                <a class="a" href=""><li>Contact</li></a>
-                                <a class="a" href=""><li>Blogs</li></a>
+                                <a class="a" href="#"><li>About</li></a>
+                                <a class="a" href="#"><li>Contact</li></a>
+                                <a class="a" href="#"><li>Blogs</li></a>
                             </ul>
                         </div>
                         <div>
                             <p class="or_text">Follow us</p>
                             <ul class="gr_img">
-                                <a class="a" href=""><li><img src="/ic_baseline-facebook.png" alt=""></li></a>
-                                <a class="a" href=""><li><img src="/mdi_instagram.png" alt=""></li></a>
-                                <a class="a" href=""><li><img src="/mdi_twitter.png" alt=""></li></a>
-                                <a class="a" href=""><li><img src="/ic_baseline-tiktok.png" alt=""></li></a>
+                                <a class="a" href="#"><li><img src="/ic_baseline-facebook.png" alt=""></li></a>
+                                <a class="a" href="#"><li><img src="/mdi_instagram.png" alt=""></li></a>
+                                <a class="a" href="#"><li><img src="/mdi_twitter.png" alt=""></li></a>
+                                <a class="a" href="#"><li><img src="/ic_baseline-tiktok.png" alt=""></li></a>
                             </ul>
                         </div>
                     </div>

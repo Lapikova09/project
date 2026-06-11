@@ -45,6 +45,7 @@ export class ListingPageComponent {
   search_q:string|null = null
   currency_icon:string ='$'
 
+
   ngOnInit(){
     this.getAllItems(),
     this.getAllCategories(), 
@@ -52,6 +53,9 @@ export class ListingPageComponent {
   }
 
   getAllItems(){
+    if(this.apiService.categoryIdActive){
+      this.selectedCategoryId = this.apiService.categoryIdFromSwiper
+    }
     this.apiService.getItems(this.min_price, this.max_price, this.sort_type, this.page, this.selectedCategoryId, this.search_q).subscribe({
       next: (data: Catalog) => {
         this.catalog = data;
@@ -135,4 +139,17 @@ export class ListingPageComponent {
     this.getAllItems();
   }
 
+  validateOnBlurMin() {
+    if(this.min_price)
+    if (this.min_price < 1 || !this.min_price) {
+      this.min_price = 1;
+    }
+  }
+
+  validateOnBlurMax() {
+    if(this.max_price)
+    if (this.max_price < 1 || !this.max_price) {
+      this.max_price = 1;
+    }
+  }
 }

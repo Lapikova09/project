@@ -117,6 +117,9 @@ export class BagComponent {
   getOrders(){
     this.apiService.getOrders().subscribe({
       next: (data: Order[]) => {
+        data.forEach(element => {
+          element.created_at = element.created_at.substring(0, 10) + ' at ' + element.created_at.substring(11, 19);
+        });
         this.orders = data;
         console.log('Заказы успешно получены')
       },

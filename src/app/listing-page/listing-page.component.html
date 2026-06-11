@@ -90,11 +90,11 @@
                     <div class="refine">
                         <div>
                             <label>From</label>
-                            <input [(ngModel)]="min_price"  (input)="onSearchInput()" class="money_filter" type="number">
+                            <input [(ngModel)]="min_price"  (input)="onSearchInput()" class="money_filter" type="number" (blur)="validateOnBlurMin()" min="1">
                         </div>
                         <div>
                             <label>To</label>
-                            <input [(ngModel)]="max_price" (input)="onSearchInput()" class="money_filter" type="number">
+                            <input [(ngModel)]="max_price" (input)="onSearchInput()" class="money_filter" type="number" (blur)="validateOnBlurMax()" min="1">
                         </div>
                     </div>
                     <p class="filt">Sorting</p>
