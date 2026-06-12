@@ -94,9 +94,9 @@
                 <input [(ngModel)]="login_password" class="password" type="text" placeholder="Password">
                 <div class="login" (click)="login()">Login</div>
                 <div class="social">
-                    <button><img src="/fr1.png" alt=""></button>
-                    <button><img src="/fr2.png" alt=""></button>
-                    <button><img src="/fr3.png" alt=""></button>
+                    <div><img src="/fr1.png" alt=""></div>
+                    <div><img src="/fr2.png" alt=""></div>
+                    <div><img src="/fr3.png" alt=""></div>
                 </div>
                 <p class="click">By clicking 'Log In' you agree to our website KicksClub Terms & Conditions, Kicks Privacy Notice and Terms & Conditions.</p>
             </div>
@@ -160,10 +160,10 @@
                     <p class="text2">Sign up for free! Join the community.</p>
                     <div class="input_cont">
                         <input type="text" placeholder="Email address" >
-                        <button><img src="/style_layer.png" alt=""></button>
+                        <div><img src="/style_layer.png" alt=""></div>
                     </div>
                 </div>
-                <a href=""><img src="/Group 1.png" alt=""></a>
+                <a href="#"><img src="/Group 1.png" alt=""></a>
             </div>
             <div class="grey_cont">
                 <div class="lit_cont">
@@ -176,7 +176,7 @@
                             <p class="or_text">Categories</p>
                             <ul class="gr_text">
                                 <div *ngFor="let el of categories">
-                                    <a class="a" href="/listing_page.html">
+                                    <a class="a" routerLink="/listingPage" (click)="sendCategory(el.id)">
                                         <div>{{el.name}}</div>
                                     </a>
                                 </div>
@@ -185,25 +185,24 @@
                         <div>
                             <p class="or_text">Company</p>
                             <ul class="gr_text">
-                                <a class="a" href=""><li>About</li></a>
-                                <a class="a" href=""><li>Contact</li></a>
-                                <a class="a" href=""><li>Blogs</li></a>
+                                <a class="a" href="#"><li>About</li></a>
+                                <a class="a" href="#"><li>Contact</li></a>
+                                <a class="a" href="#"><li>Blogs</li></a>
                             </ul>
                         </div>
                         <div>
                             <p class="or_text">Follow us</p>
                             <ul class="gr_img">
-                                <a class="a" href=""><li><img src="/ic_baseline-facebook.png" alt=""></li></a>
-                                <a class="a" href=""><li><img src="/mdi_instagram.png" alt=""></li></a>
-                                <a class="a" href=""><li><img src="/mdi_twitter.png" alt=""></li></a>
-                                <a class="a" href=""><li><img src="/ic_baseline-tiktok.png" alt=""></li></a>
+                                <a class="a" href="#"><li><img src="/ic_baseline-facebook.png" alt=""></li></a>
+                                <a class="a" href="#"><li><img src="/mdi_instagram.png" alt=""></li></a>
+                                <a class="a" href="#"><li><img src="/mdi_twitter.png" alt=""></li></a>
+                                <a class="a" href="#"><li><img src="/ic_baseline-tiktok.png" alt=""></li></a>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <img class="logo" src="/Logo (1).png" alt="">
             </div>
-            
         </div>
     </div>
 </div>

@@ -66,9 +66,9 @@
             space-between="20"
             navigation="true" 
             pagination="true"
-            autoplay-delay="30000">
+            autoplay-delay="3000">
             <swiper-slide *ngFor="let el of categories">
-                <div class="category-slide">
+                <div class="category_slide">
                     <img src="NOPHOTO.png" alt="#">
                     <a class="a" routerLink="/listingPage" (click)="sendCategory(el.id)">
                         {{el.name}}
@@ -77,7 +77,7 @@
             </swiper-slide>
         </swiper-container>
     
-        <div *ngIf="!showSwiper || categories.length === 0" class="loading-swiper">
+        <div *ngIf="!showSwiper || categories.length === 0" class="loading_swiper">
             Загрузка категорий...
         </div>
     </div>
@@ -94,7 +94,7 @@
                         <div><img src="/style_layer.png" alt=""></div>
                     </div>
                 </div>
-                <a href=""><img src="/Group 1.png" alt=""></a>
+                <a href="#"><img src="/Group 1.png" alt=""></a>
             </div>
             <div class="grey_cont">
                 <div class="lit_cont">

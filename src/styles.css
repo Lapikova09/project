@@ -317,3 +317,10 @@ html,body{
 	color: #FFF;
 }
  
+
+
+.body{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}

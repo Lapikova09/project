@@ -16,9 +16,8 @@ export class MainService {
   categoryIdFromSwiper:number = 0
   categoryIdActive:boolean = false
 
-  // ограничения, чтобы в минус уходить
   // новый токен
-  // запросы для админа
+  // обработка ошибок
 
   getItems(min_price:number|null, max_price:number|null, sort_type:string, page:number, categoryID:number|null, search_q:string|null): Observable<Catalog> {
     const headers = new HttpHeaders({
@@ -217,5 +216,14 @@ export class MainService {
       .set('password', password)
 
     return this.http.post(`${this.apiUrl}/reset_password/confirm`, {}, {params});
+  }
+
+  sendCategoryId(caterogyId:number){
+    this.categoryIdFromSwiper = caterogyId
+    this.categoryIdActive = true
+    
+    setTimeout(() => {
+        this.categoryIdActive = false
+    }, 3000);
   }
 }

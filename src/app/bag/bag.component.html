@@ -54,9 +54,9 @@
                     <div class="card" *ngFor="let el of bag.items" >
                         <img src="NOPHOTO.png" width="250px" alt="">
                         <div class="card_text">
-                            <div class="prize">
+                            <div class="price">
                                 <p>{{el.item_name}}</p>
-                                <p class="purp">{{el.full_price}} $</p>
+                                <p class="purp">{{el.full_price}} {{currency_icon}}</p>
                             </div>
                             <p class="grey">Men’s Road Running Shoes</p>
                             <p class="grey">Enamel Blue/ University White</p>
@@ -71,7 +71,7 @@
                     <div class="order" *ngFor="let order of orders">
                         <div class="card_text">
                             <p class="price">Created: {{order.created_at}}</p>
-                            <p class="price">Full price: {{order.price}}</p>
+                            <p class="price">Full price: {{order.price}}  {{currency_icon}}</p>
                             <p class="price">Status: {{order.status}}</p>
                         </div>
                         <div class="card" *ngFor="let el of order.items">
@@ -79,7 +79,7 @@
                             <div class="card_text">
                                 <div class="price">
                                     <p>{{el.item_name}}</p>
-                                    <p class="purp">{{el.item_price}} $</p>
+                                    <p class="purp">{{el.item_price}} {{currency_icon}}</p>
                                 </div>
                                 <p class="grey">Men’s Road Running Shoes</p>
                                 <p class="grey">Enamel Blue/ University White</p>
@@ -96,7 +96,7 @@
                 <p class="your_bag_text">Order Summary</p>
                 <div class="item">
                     <p>Summery</p>
-                    <p class="summary_">{{bag.full_price}}$</p>
+                    <p class="summary_">{{bag.full_price}} {{currency_icon}}</p>
                 </div>
                 <div class="item">
                     <p>Count</p>
@@ -107,7 +107,7 @@
         </div>
     </div>
 
-    <div class="container">
+   <div class="container">
         <div class="foot_cont">
             <div class="purp_cont">  
                 <div class="purp_text">
@@ -115,10 +115,10 @@
                     <p class="text2">Sign up for free! Join the community.</p>
                     <div class="input_cont">
                         <input type="text" placeholder="Email address" >
-                        <button><img src="/style_layer.png" alt=""></button>
+                        <div><img src="/style_layer.png" alt=""></div>
                     </div>
                 </div>
-                <a href=""><img src="/Group 1.png" alt=""></a>
+                <a href="#"><img src="/Group 1.png" alt=""></a>
             </div>
             <div class="grey_cont">
                 <div class="lit_cont">
@@ -131,7 +131,7 @@
                             <p class="or_text">Categories</p>
                             <ul class="gr_text">
                                 <div *ngFor="let el of categories">
-                                    <a class="a" href="/listing_page.html">
+                                    <a class="a" routerLink="/listingPage" (click)="sendCategory(el.id)">
                                         <div>{{el.name}}</div>
                                     </a>
                                 </div>
@@ -140,25 +140,24 @@
                         <div>
                             <p class="or_text">Company</p>
                             <ul class="gr_text">
-                                <a class="a" href=""><li>About</li></a>
-                                <a class="a" href=""><li>Contact</li></a>
-                                <a class="a" href=""><li>Blogs</li></a>
+                                <a class="a" href="#"><li>About</li></a>
+                                <a class="a" href="#"><li>Contact</li></a>
+                                <a class="a" href="#"><li>Blogs</li></a>
                             </ul>
                         </div>
                         <div>
                             <p class="or_text">Follow us</p>
                             <ul class="gr_img">
-                                <a class="a" href=""><li><img src="/ic_baseline-facebook.png" alt=""></li></a>
-                                <a class="a" href=""><li><img src="/mdi_instagram.png" alt=""></li></a>
-                                <a class="a" href=""><li><img src="/mdi_twitter.png" alt=""></li></a>
-                                <a class="a" href=""><li><img src="/ic_baseline-tiktok.png" alt=""></li></a>
+                                <a class="a" href="#"><li><img src="/ic_baseline-facebook.png" alt=""></li></a>
+                                <a class="a" href="#"><li><img src="/mdi_instagram.png" alt=""></li></a>
+                                <a class="a" href="#"><li><img src="/mdi_twitter.png" alt=""></li></a>
+                                <a class="a" href="#"><li><img src="/ic_baseline-tiktok.png" alt=""></li></a>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <img class="logo" src="/Logo (1).png" alt="">
             </div>
-            
         </div>
     </div>
 </div>

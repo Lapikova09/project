@@ -70,4 +70,8 @@ export class AdministratorPageComponent {
       }
     });
   }
+
+  sendCategory(caterogyId:number){
+    this.apiService.sendCategoryId(caterogyId)
+  }
 }

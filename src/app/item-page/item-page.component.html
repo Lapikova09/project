@@ -120,57 +120,57 @@
         </div>
     </div>
 
-        <div class="container">
-            <div class="foot_cont">
-                <div class="purp_cont">  
-                    <div class="purp_text">
-                        <p class="text1">Join our KicksPlus Club & get 15% off</p>
-                        <p class="text2">Sign up for free! Join the community.</p>
-                        <div class="input_cont">
-                            <input type="text" placeholder="Email address" >
-                            <button><img src="/style_layer.png" alt=""></button>
-                        </div>
+    <div class="container">
+        <div class="foot_cont">
+            <div class="purp_cont">  
+                <div class="purp_text">
+                    <p class="text1">Join our KicksPlus Club & get 15% off</p>
+                    <p class="text2">Sign up for free! Join the community.</p>
+                    <div class="input_cont">
+                        <input type="text" placeholder="Email address" >
+                        <div><img src="/style_layer.png" alt=""></div>
                     </div>
-                    <a href=""><img src="/Group 1.png" alt=""></a>
                 </div>
-                <div class="grey_cont">
-                    <div class="lit_cont">
+                <a href="#"><img src="/Group 1.png" alt=""></a>
+            </div>
+            <div class="grey_cont">
+                <div class="lit_cont">
+                    <div>
+                        <p class="oran_text">About us</p>
+                        <p class="grey_text">We are the biggest hyperstore in the universe. We got you all cover with our exclusive collections and latest drops.</p>
+                    </div>
+                    <div class="lit_cont2">
                         <div>
-                            <p class="oran_text">About us</p>
-                            <p class="grey_text">We are the biggest hyperstore in the universe. We got you all cover with our exclusive collections and latest drops.</p>
+                            <p class="or_text">Categories</p>
+                            <ul class="gr_text">
+                                <div *ngFor="let el of categories">
+                                    <a class="a" routerLink="/listingPage" (click)="sendCategory(el.id)">
+                                        <div>{{el.name}}</div>
+                                    </a>
+                                </div>
+                            </ul>
                         </div>
-                        <div class="lit_cont2">
-                            <div>
-                                <p class="or_text">Categories</p>
-                                <ul class="gr_text">
-                                    <div *ngFor="let el of categories">
-                                        <a class="a" href="/listing_page.html">
-                                            <div>{{el.name}}</div>
-                                        </a>
-                                    </div>
-                                </ul>
-                            </div>
-                            <div>
-                                <p class="or_text">Company</p>
-                                <ul class="gr_text">
-                                    <a class="a" href=""><li>About</li></a>
-                                    <a class="a" href=""><li>Contact</li></a>
-                                    <a class="a" href=""><li>Blogs</li></a>
-                                </ul>
-                            </div>
-                            <div>
-                                <p class="or_text">Follow us</p>
-                                <ul class="gr_img">
-                                    <a class="a" href=""><li><img src="/ic_baseline-facebook.png" alt=""></li></a>
-                                    <a class="a" href=""><li><img src="/mdi_instagram.png" alt=""></li></a>
-                                    <a class="a" href=""><li><img src="/mdi_twitter.png" alt=""></li></a>
-                                    <a class="a" href=""><li><img src="/ic_baseline-tiktok.png" alt=""></li></a>
-                                </ul>
-                            </div>
+                        <div>
+                            <p class="or_text">Company</p>
+                            <ul class="gr_text">
+                                <a class="a" href="#"><li>About</li></a>
+                                <a class="a" href="#"><li>Contact</li></a>
+                                <a class="a" href="#"><li>Blogs</li></a>
+                            </ul>
+                        </div>
+                        <div>
+                            <p class="or_text">Follow us</p>
+                            <ul class="gr_img">
+                                <a class="a" href="#"><li><img src="/ic_baseline-facebook.png" alt=""></li></a>
+                                <a class="a" href="#"><li><img src="/mdi_instagram.png" alt=""></li></a>
+                                <a class="a" href="#"><li><img src="/mdi_twitter.png" alt=""></li></a>
+                                <a class="a" href="#"><li><img src="/ic_baseline-tiktok.png" alt=""></li></a>
+                            </ul>
                         </div>
                     </div>
-                    <img class="logo" src="/Logo (1).png" alt="">
                 </div>
+                <img class="logo" src="/Logo (1).png" alt="">
             </div>
         </div>
+    </div>
 </div>

@@ -59,11 +59,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   }
 
   sendCategory(caterogyId:number){
-    this.apiService.categoryIdFromSwiper = caterogyId
-    this.apiService.categoryIdActive = true
-    
-    setTimeout(() => {
-        this.apiService.categoryIdActive = false
-    }, 3000);
+    this.apiService.sendCategoryId(caterogyId)
   }
 }

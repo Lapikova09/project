@@ -195,4 +195,8 @@ export class ItemPageComponent {
       this.ratingForComment = 1;
     }
   }
+
+  sendCategory(caterogyId:number){
+    this.apiService.sendCategoryId(caterogyId)
+  }
 }

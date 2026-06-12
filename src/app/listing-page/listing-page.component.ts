@@ -152,4 +152,9 @@ export class ListingPageComponent {
       this.max_price = 1;
     }
   }
+
+  sendCategory(caterogyId:number){
+    this.apiService.sendCategoryId(caterogyId)
+    this.getAllItems()
+  }
 }

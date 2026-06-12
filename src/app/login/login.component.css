@@ -11,9 +11,10 @@
 }
 
 .log h6{
-    font-size: 32px;
+    font-size: 36px;
     font-weight: 600;
-    line-height: 38px;
+    line-height: 43px;
+    margin-bottom: 6px;
 }
 
 .forgot{
@@ -200,9 +201,6 @@
     gap: 300px;
 }
 
-.show{
-    display: block;
-}
 
 .logout_but{
     background-color: #232321;

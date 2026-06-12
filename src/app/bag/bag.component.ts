@@ -18,6 +18,7 @@ export class BagComponent {
   orders_shown:boolean = false
   bag_text:string = 'Check current orders'
   text:string = 'bag'
+  currency_icon:string = '$'
 
   categories:Category[]=[
     {
@@ -50,7 +51,8 @@ export class BagComponent {
 
   ngOnInit(){
     this.getAllCategories(), 
-    this.getItems()
+    this.getUser(),
+    this.getItems() 
   }
   
   getAllCategories(){
@@ -128,4 +130,26 @@ export class BagComponent {
       }
     });
   }
+
+  sendCategory(caterogyId:number){
+    this.apiService.sendCategoryId(caterogyId)
+  }
+
+  getUser(){
+     this.apiService.getUser().subscribe({
+      next: (response) => {
+        console.log('Успешно:', response);
+        if(response.currency == 'USD'){
+          this.currency_icon = "$"
+        }else if(response.currency == 'RUB'){
+          this.currency_icon = "₽"
+        }else if(response.currency == 'BYN'){
+          this.currency_icon = "Br"
+        }
+      },
+      error: (error) => {
+        console.error('Ошибка:', error);
+      }
+    });
+  }  
 }

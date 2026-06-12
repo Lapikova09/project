@@ -244,4 +244,8 @@ export class LoginComponent {
       }
     });
   }
+
+  sendCategory(caterogyId:number){
+    this.apiService.sendCategoryId(caterogyId)
+  }
 }
